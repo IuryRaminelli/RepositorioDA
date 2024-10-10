@@ -9,5 +9,6 @@
     <footer class="pt-5 my-5 text-body-secondary border-top">
         Desenvolvido por <a href="https://instagram.com/iury_raminelli">Iury Raminelli</a> - ADS18 &middot; &copy; 2024
     </footer>
+    <script src="<?=HOME?>src/View/js/comandos.js"></script>
 </body>
 </html>

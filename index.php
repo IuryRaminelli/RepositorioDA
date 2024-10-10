@@ -1,5 +1,3 @@
 <?php
-
-header('Location: View/index.php');
-
+	include_once __DIR__ .'/src/Rotas/ConfigRotas.php';
 ?>

@@ -11,19 +11,20 @@
     <header class="header-inicio">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-          <a class="navbar-brand" href="index.php"><img src="img/logoo-ads.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top"></a>
+          <a class="navbar-brand" href="<?=HOME?>Home"><img src="src/View/img/logoo-ads.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <?php
+              include_once __DIR__ . '/../Rotas/Constantes.php';
               if (session_status() == PHP_SESSION_NONE) {
                 session_start();
               }
               if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") :
               ?>
-                <li class="nav-item"><a class="nav-link" href="sobre.php">Sobre</a></l>
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></l>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Navegar
@@ -61,11 +62,11 @@
                   </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="contato.php">Contato</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
 
               <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") : ?>
-                <li class="nav-item"><a class="nav-link" href="sobre.php">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Navegar
@@ -101,11 +102,11 @@
                   </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="contato.php">Contato</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
 
               <?php if (!isset($_SESSION["USER_LOGIN"])) : ?>
-                <li class="nav-item"><a class="nav-link" href="sobre.php">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Navegar
@@ -118,32 +119,32 @@
                     <li><a class="dropdown-item" href="#">Tipo</a></li>
                   </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="contato.php">Contato</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
             </ul>
             <ul class="navbar-nav">
               <?php if (!isset($_SESSION["USER_LOGIN"])) : ?>
                 <div class="dropdown text">
                   <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="img/perfil2.webp" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="<?=HOME?>src/View/img/perfil2.webp" alt="mdo" width="32" height="32" class="rounded-circle">
                   </a>
                   <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="login.php">Entrar</a></li>
-                    <li><a class="dropdown-item" href="cadastro.php">Cadastrar</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Login">Entrar</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Cadastro">Cadastrar</a></li>
                   </ul>
                 </div>
               <?php else : ?>
                 <div class="dropdown text">
                   <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="img/perfil2.webp" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="<?=HOME?>src/View/img/perfil2.webp" alt="mdo" width="32" height="32" class="rounded-circle">
                   </a>
                   <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="#">Configurações</a></li>
-                    <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Perfil">Perfil</a></li>
                     <li>
                       <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="sair.php">Sair</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Sair">Sair</a></li>
                   </ul>
                 </div>
               <?php endif; ?>
