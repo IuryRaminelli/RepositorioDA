@@ -114,7 +114,7 @@
               <?php if (!isset($_SESSION["USER_LOGIN"])) : ?>
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
                 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Gestão</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Membros</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>

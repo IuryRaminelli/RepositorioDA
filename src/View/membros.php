@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .tab-pane {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+            text-align: center; /* Centraliza o texto */
+        }
+    </style>
 </head>
 <body>
     <?php
@@ -27,53 +37,59 @@
         <br><br>
 
         <h1>Membros</h1>
-        <div class="d-flex align-items-start">
-            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" 
-                aria-controls="v-pills-home" aria-selected="true">2024-2025</button>
-                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" 
-                aria-controls="v-pills-profile" aria-selected="false">2023-2024</button>
-                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" 
-                aria-controls="v-pills-messages" aria-selected="false">2022-2023</button>
-                <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" 
-                aria-controls="v-pills-settings" aria-selected="false">2021-2022</button>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">2024-2025</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">2023-2024</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">2022-2023</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">2021-2022</button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <?php
+                    /* FAZER COM O BANCO DE DADOS */
+                ?>
+                <h3>Presidente:</h3>
+                <b>Rafael Müller Tischler</b>
+                <br><br>
+
+                <h3>Vice-presidente</h3>
+                <b>Murilo Brauner Ziani</b>
+                <br><br>
+
+                <h3>Tesoureiro(a)</h3>
+                <b>João Vitor Martins San Martin</b>
+                <br><br>
+
+                <h3>Vice-tesoureiro(a)</h3>
+                <b>João Miguel Zucuni Ugulini</b>
+                <br><br>
+
+                <h3>Secretário(a)</h3>
+                <b>Carolini Bassan Carlé</b>
+                <br><br>
+
+                <h3>Vice-secretário(a)</h3>
+                <b>Maurício Carvalho Cogo</b>
             </div>
-            <div class="tab-content" id="v-pills-tabContent">
-                <br>
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                    <?php
-                        /* FAZER COM O BANCO DE DADOS */
-                    ?>
-                    <h3>Presidente:</h3>
-                    <b>Rafael Müller Tischler</b><br>
-
-                    <h3>Vice-presidente</h3>
-                    <b>Murilo Brauner Ziani</b>
-
-                    <h3>Tesoureiro(a)</h3>
-                    <b>João Vitor Martins San Martin</b><br>
-
-                    <h3>Vice-tesoureiro(a)</h3>
-                    <b>João Miguel Zucuni Ugulini</b><br>
-
-                    <h3>Secretário(a)</h3>
-                    <b>Carolini Bassan Carlé</b><br>
-
-                    <h3>Vice-secretário(a)</h3>
-                    <b>Maurício Carvalho Cogo</b><br>
-                </div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    .
-                </div>
-                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    ...
-                </div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    ...
-                </div>
+            <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                ...
+            </div>
+            <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                ...
+            </div>
+            <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                ...
             </div>
         </div>
-
 
         <?php
             include_once 'footer.php';
