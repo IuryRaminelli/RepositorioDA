@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="src/View/css/teste.css">
 </head>
 <body>
 
@@ -55,7 +61,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Estatuto</a></li>
-                    <li><a class="dropdown-item" href="#">Membros</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroUser">Membros</a></li>
                     <li><a class="dropdown-item" href="#">Financeiro</a></li>
                     <li><a class="dropdown-item" href="#">Atividades</a></li>
                     <li><a class="dropdown-item" href="#">Atas</a></li>
@@ -107,39 +113,28 @@
 
               <?php if (!isset($_SESSION["USER_LOGIN"])) : ?>
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Navegar
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="cadastrarPedidos.php">Data</a></li>
-                    <li><a class="dropdown-item" href="#">Autores</a></li>
-                    <li><a class="dropdown-item" href="#">Título</a></li>
-                    <li><a class="dropdown-item" href="#">Assunto</a></li>
-                    <li><a class="dropdown-item" href="#">Tipo</a></li>
-                  </ul>
-                </li>
+                
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Gestão</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
             </ul>
             <ul class="navbar-nav">
               <?php if (!isset($_SESSION["USER_LOGIN"])) : ?>
                 <div class="dropdown text">
-                  <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<?=HOME?>src/View/img/perfil2.webp" alt="mdo" width="32" height="32" class="rounded-circle">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="src/View/img/perfil2.png" alt="Foto" width="32" height="32" class="rounded-circle">
                   </a>
                   <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="<?=HOME?>Login">Entrar</a></li>
-                    <li><a class="dropdown-item" href="<?=HOME?>Cadastro">Cadastrar</a></li>
                   </ul>
                 </div>
               <?php else : ?>
                 <div class="dropdown text">
-                  <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<?=HOME?>src/View/img/perfil2.webp" alt="mdo" width="32" height="32" class="rounded-circle">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="src/View/img/perfil2.png" alt="Foto" width="32" height="32" class="rounded-circle">
                   </a>
                   <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">Configurações</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>Perfil">Perfil</a></li>
                     <li>
                       <hr class="dropdown-divider">

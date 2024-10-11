@@ -1,4 +1,6 @@
 <?php
+if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") {
+
 include_once __DIR__ . "/../Controller/ConUser.php";
 include_once __DIR__ . "/../Model/User.php";
 include_once __DIR__ . '/../Rotas/Constantes.php';
@@ -26,7 +28,7 @@ if (isset($_POST['cadastro'])) {
     $User = new User($arrayUser);
 
     if ($ConUser->insertUser($User)) {
-        echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href = '" . HOME . "Login';</script>";
+        echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href = '" . HOME . "Cadastro';</script>";
     } else {
         echo "<script>alert('Erro ao cadastrar usuário.'); window.location.href = '" . HOME . "Cadastro';</script>";
     }
@@ -39,11 +41,6 @@ if (isset($_POST['cadastro'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/View/css/teste.css">
 </head>
 
 <body>
@@ -71,3 +68,9 @@ if (isset($_POST['cadastro'])) {
     </div>
 </body>
 </html>
+
+<?php 
+}else{
+    echo "<h1>404 Não possui acesso.</h1>";
+}
+?>

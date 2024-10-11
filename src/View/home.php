@@ -5,10 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Repositório Diretório ADS</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <style>
     .btn-custom {
@@ -16,7 +12,6 @@
     }
   </style>
   
-  <link rel="stylesheet" type="text/css" href="src/View/css/teste.css">
 </head>
 
 <body>
@@ -39,14 +34,17 @@
     </div>
 
     <br>
+
     <h1>Busca Geral</h1>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Buscar no Repositório" aria-label="Text input with dropdown button">
-    </div>
+    <form class="d-flex" name="menu" method="post" action="SelectTudo.php">
+      <input id="tudo" name="tudo" class="form-control me-2" type="search" placeholder="Buscar no Repositório" aria-label="Search">
+        <button id="tudo1" name="tudo1" class="btn btn-outline-light" type="submit">
+          <i class='bx bx-search icon'></i>
+        </button>
+    </form>
 
     <br><br>
     <h1>Busca Facetada</h1>
-
     <div class="container">
       <div class="row">
         <div class="col-4 d-flex justify-content-start">
