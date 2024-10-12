@@ -18,7 +18,7 @@
     Rotas::add('/Login', 'View/login.php');
     Rotas::add('/Perfil', 'View/perfil.php');
     Rotas::add('/Sair', 'View/sair.php');
-    
+
     Rotas::erro('View/404.php');
     Rotas::exec();
 ?>

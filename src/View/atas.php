@@ -1,5 +1,8 @@
 <?php
-if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") {
+              if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+              }
+if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") {
 
 ?>
 
@@ -11,7 +14,48 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@
     <title>Document</title>
 </head>
 <body>
-    
+    <?php 
+        include_once 'header.php'; 
+    ?>
+    <div class="container">
+
+        <br><br><br><br>
+
+        <?php
+            include_once __DIR__ . '/../Controller/ConAtas.php';
+            include_once __DIR__ . '/../Model/Atas.php';
+            $ConAtas = new ConAtas();
+            $lista = $ConAtas->selectAllAtas();
+        ?>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Dia</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Arquivo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                    foreach ($lista as $atas){
+                        $atas = new Atas($atas);
+                        echo '
+                        <tr>
+                            <th>' . $atas->getDia() . '</th>
+                            <th>' . $atas->getDescricao() . '</th>
+                            <th>
+                                <a href="'. $atas->getArquivo() .'" target="_blank">
+                                    <img src="src/View/img/pdf.png" width="28" height="28" alt="">
+                                </a>
+                            </th>
+                        </tr>
+                        ';
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
 

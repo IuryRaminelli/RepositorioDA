@@ -31,40 +31,45 @@
               if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") :
               ?>
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></l>
+
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Membros</a></li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Navegar
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="cadastrarPedidos.php">Data</a></li>
+                    <li><a class="dropdown-item" href="#">Data</a></li>
                     <li><a class="dropdown-item" href="#">Autores</a></li>
                     <li><a class="dropdown-item" href="#">Título</a></li>
                     <li><a class="dropdown-item" href="#">Assunto</a></li>
                     <li><a class="dropdown-item" href="#">Tipo</a></li>
                   </ul>
                 </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Documentos
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Estatuto</a></li>
-                    <li><a class="dropdown-item" href="#">Atas</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Atividades">Estatuto</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Atas">Atas</a></li>
                     <li><a class="dropdown-item" href="#">algo2</a></li>
                     <li><a class="dropdown-item" href="#">algo3</a></li>
                     <li><a class="dropdown-item" href="#">algo4</a></li>
                   </ul>
                 </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    ControleADM
+                    CadastrarADM
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroUser">Membros</a></li>
                     <li><a class="dropdown-item" href="#">Financeiro</a></li>
                     <li><a class="dropdown-item" href="#">Atividades</a></li>
-                    <li><a class="dropdown-item" href="#">Atas</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
                   </ul>
                 </li>
 
@@ -73,38 +78,32 @@
 
               <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") : ?>
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Membros</a></li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Navegar
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="cadastrarPedidos.php">Data</a></li>
+                    <li><a class="dropdown-item" href="#">Data</a></li>
                     <li><a class="dropdown-item" href="#">Autores</a></li>
                     <li><a class="dropdown-item" href="#">Título</a></li>
                     <li><a class="dropdown-item" href="#">Assunto</a></li>
                     <li><a class="dropdown-item" href="#">Tipo</a></li>
                   </ul>
                 </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Documentos
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="cadastrarPedidos.php">algo0</a></li>
-                    <li><a class="dropdown-item" href="#">algo1</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Atividades">Estatuto</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Atas">Atas</a></li>
                     <li><a class="dropdown-item" href="#">algo2</a></li>
                     <li><a class="dropdown-item" href="#">algo3</a></li>
                     <li><a class="dropdown-item" href="#">algo4</a></li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    ControleUSER
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Atividades</a></li>
-                    <li><a class="dropdown-item" href="#">Atas</a></li>
                   </ul>
                 </li>
 
@@ -115,6 +114,19 @@
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
                 
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Membros</a></li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Navegar
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Data</a></li>
+                    <li><a class="dropdown-item" href="#">Autores</a></li>
+                    <li><a class="dropdown-item" href="#">Título</a></li>
+                    <li><a class="dropdown-item" href="#">Assunto</a></li>
+                    <li><a class="dropdown-item" href="#">Tipo</a></li>
+                  </ul>
+                </li>
 
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
