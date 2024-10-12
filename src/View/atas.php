@@ -2,7 +2,7 @@
               if (session_status() == PHP_SESSION_NONE) {
                 session_start();
               }
-if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") {
+if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") {
 
 ?>
 
@@ -55,6 +55,7 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@
                 ?>
             </tbody>
         </table>
+        <?php include_once 'footer.php'; ?>
     </div>
 </body>
 </html>
