@@ -2,7 +2,8 @@
               if (session_status() == PHP_SESSION_NONE) {
                 session_start();
               }
-if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") {
+
+if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com" || $_SESSION["USER_LOGIN"] == "administrador@teste.com") {
 
 ?>
 
@@ -40,21 +41,20 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@
                 <?php 
                     foreach ($lista as $atas){
                         $atas = new Atas($atas);
-                        echo '
-                        <tr>
-                            <th>' . $atas->getDia() . '</th>
-                            <th>' . $atas->getDescricao() . '</th>
-                            <th>
+                        echo '<tr>
+                            <td>' . $atas->getDia() . '</th>
+                            <td>' . $atas->getDescricao() . '</th>
+                            <td>
                                 <a href="'. $atas->getArquivo() .'" target="_blank">
                                     <img src="src/View/img/pdf.png" width="28" height="28" alt="">
                                 </a>
-                            </th>
-                        </tr>
-                        ';
+                            </td>
+                        </tr>';
                     }
                 ?>
             </tbody>
         </table>
+        <br><br>
         <?php include_once 'footer.php'; ?>
     </div>
 </body>
