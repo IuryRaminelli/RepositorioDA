@@ -1,20 +1,21 @@
 <?php
     include_once __DIR__ . '/Rotas.php';
 
-    /* Normal */
+    /* NORMAL */
     Rotas::add('/Home', '/View/home.php');
     Rotas::add('/Sobre', 'View/sobre.php');
     Rotas::add('/Contato', 'View/contato.php');
     Rotas::add('/Membros', 'View/membros.php');
+    Rotas::add('/Financeiro', 'View/financeiro.php');
 
-    /* USER */
+    /* DOCUMENTOS */
     Rotas::add('/Atas', 'View/atas.php');
 
-    /* ADM */
+    /* CONTROLE */
     Rotas::add('/CadastroUser', 'View/cadastroUser.php');
     Rotas::add('/CadastroAtas', 'View/cadastroAtas.php');
 
-    /* Perfil */
+    /* PERFIL */
     Rotas::add('/Login', 'View/login.php');
     Rotas::add('/Perfil', 'View/perfil.php');
     Rotas::add('/Sair', 'View/sair.php');

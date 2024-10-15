@@ -62,7 +62,7 @@
 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    CadastrarADM
+                    Controle
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Estatuto</a></li>
@@ -73,13 +73,15 @@
                   </ul>
                 </li>
 
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Financeiro">Financeiro</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
 
               <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") : ?>
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Membros</a></li>
+                <li class="nav-item"><a class="nav-link active" href="<?=HOME?>Membros">Membros</a></li>
 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -107,6 +109,18 @@
                   </ul>
                 </li>
 
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Controle
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividades">Atividades</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
+                  </ul>
+                </li>
+                
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Financeiro">Financeiro</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
 
@@ -127,6 +141,8 @@
                     <li><a class="dropdown-item" href="#">Tipo</a></li>
                   </ul>
                 </li>
+                
+                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Financeiro">Financeiro</a></li>
 
                 <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
