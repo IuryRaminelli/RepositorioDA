@@ -19,7 +19,10 @@ if($linha != null){
 </head>
 <body>
     
-<?php include_once 'header.php'; ?>
+<?php 
+      include_once 'header.php';
+      include_once 'vlibras.php';
+?>
 
 <div class="container">
     <br><br><br><br>

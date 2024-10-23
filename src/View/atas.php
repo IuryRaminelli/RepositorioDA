@@ -16,7 +16,8 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@
 </head>
 <body>
     <?php 
-        include_once 'header.php'; 
+      include_once 'header.php';
+      include_once 'vlibras.php';
     ?>
     <div class="container">
 
