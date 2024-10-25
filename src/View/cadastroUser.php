@@ -56,13 +56,13 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@
     <div class="container" style="width: 40%;">
     <form align="center" action="<?= HOME ?>CadastroUser" method="POST">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" name="nome" placeholder="Digite seu nome" autofocus="true"/><br>
+                <input type="text" class="form-control" name="nome" placeholder="Digite um nome" autofocus="true"/><br>
                 <label for="email">E-mail</label>
-                <input type="email" class="form-control" name="email" placeholder="Digite seu e-mail"/><br>
+                <input type="email" class="form-control" name="email" placeholder="Digite um e-mail"/><br>
                 <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" name="telefone" placeholder="Digite seu telefone"/><br>
+                <input type="tel" class="form-control" name="telefone" placeholder="Digite um telefone"/><br>
                 <label for="senha">Senha</label>
-                <input type="password" class="form-control" name="senha" placeholder="Digite sua senha"/><br>
+                <input type="password" class="form-control" name="senha" placeholder="Digite uma senha"/><br>
                 <input type="submit" value="Cadastrar" class="btn" name="cadastro" />
             </form>
     </div>

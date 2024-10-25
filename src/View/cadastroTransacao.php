@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") {
+if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com" || $_SESSION["USER_LOGIN"] == "administrador@teste.com") {
 
     include_once __DIR__ . "/../Controller/ConTransacao.php";
     include_once __DIR__ . "/../Model/Transacao.php";
