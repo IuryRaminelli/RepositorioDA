@@ -64,21 +64,21 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroEstatuto', 'CadastroUser', 'CadastroTransacao', 'CadastroAtividades', 'CadastroAtas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroEstatuto', 'CadastroUser', 'CadastroTransacao', 'CadastroAtividade', 'CadastroAtas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Controle
                 </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroEstatuto">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroUser">Membros</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroTransacao">Financeiro</a></li>
-                    <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividades">Atividades</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividade">Atividades</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
                   </ul>
                 </li>
 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
 
-                <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Atividade' ? 'active' : '' ?>"  href="<?=HOME?>Atividade">Atividades</a></li>
               <?php endif; ?>
 
               <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") : ?>
@@ -110,11 +110,11 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroAtividades', 'CadastroAtas', 'CadastroTransacao']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroAtividade', 'CadastroAtas', 'CadastroTransacao']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Controle
                 </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividades">Atividades</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividade">Atividades</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroTransacao">Financeiro</a></li>
                   </ul>
@@ -122,7 +122,7 @@
                 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
 
-                <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Atividade' ? 'active' : '' ?>"  href="<?=HOME?>Atividade">Atividades</a></li>
               <?php endif; ?>
 
               <?php if (!isset($_SESSION["USER_LOGIN"])) : ?>
@@ -146,7 +146,7 @@
                 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
 
-                <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Atividade' ? 'active' : '' ?>"  href="<?=HOME?>Atividade">Atividades</a></li>
               <?php endif; ?>
             </ul>
             <ul class="navbar-nav">

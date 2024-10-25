@@ -4,7 +4,7 @@
     /* NORMAL */
     Rotas::add('/Home', '/View/home.php');
     Rotas::add('/Sobre', 'View/sobre.php');
-    Rotas::add('/Contato', 'View/contato.php');
+    Rotas::add('/Atividade', 'View/atividade.php');
     Rotas::add('/Membros', 'View/membros.php');
     Rotas::add('/Financeiro', 'View/financeiro.php');
 
@@ -16,7 +16,7 @@
     Rotas::add('/CadastroAtas', 'View/cadastroAtas.php');
     Rotas::add('/CadastroTransacao', 'View/cadastroTransacao.php');
     Rotas::add('/CadastroEstatuto', 'View/cadastroEstatuto.php');
-    Rotas::add('/CadastroAtividades', 'View/cadastroAtividades.php');
+    Rotas::add('/CadastroAtividade', 'View/cadastroAtividade.php');
 
     /* PERFIL */
     Rotas::add('/Login', 'View/login.php');

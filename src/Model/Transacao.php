@@ -23,7 +23,7 @@
         public function getQuantidade(){
             return $this->quantidade;
         } 
-        public function setNome($quantidade){
+        public function setQuantidade($quantidade){
             return $this->quantidade = $quantidade;
         }
         public function getDia(){
