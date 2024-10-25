@@ -51,9 +51,10 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@
     ?>
     <div class="container">
     <br><br><br><br>
+    
+    <h1 align="center">CADASTRAR MEMBROS</h1><br>
     <div class="container" style="width: 40%;">
     <form align="center" action="<?= HOME ?>CadastroUser" method="POST">
-                <h1>CADASTRAR USUÁRIO</h1><br>
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" name="nome" placeholder="Digite seu nome" autofocus="true"/><br>
                 <label for="email">E-mail</label>

@@ -51,9 +51,10 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@
 ?>
     <div class="container">
     <br><br><br><br>
+    
+    <h1 align="center">CADASTRAR ATAS</h1><br>
     <div class="container" style="width: 40%;">
     <form align="center" action="<?= HOME ?>CadastroAtas" method="POST" enctype="multipart/form-data">
-                <h1>CADASTRAR ATAS</h1><br>
                 <label for="dia">Data</label>
                 <input type="date" class="form-control" name="dia" autofocus="true"/><br>
                 <label for="descricao">Descrição</label>

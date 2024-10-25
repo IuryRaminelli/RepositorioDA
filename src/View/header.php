@@ -56,9 +56,6 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>Atividades">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>Atas">Atas</a></li>
-                    <li><a class="dropdown-item" href="#">algo2</a></li>
-                    <li><a class="dropdown-item" href="#">algo3</a></li>
-                    <li><a class="dropdown-item" href="#">algo4</a></li>
                   </ul>
                 </li>
 
@@ -67,10 +64,10 @@
                     Controle
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Estatuto</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroEstatuto">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroUser">Membros</a></li>
-                    <li><a class="dropdown-item" href="#">Financeiro</a></li>
-                    <li><a class="dropdown-item" href="#">Atividades</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroTransacao">Financeiro</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividades">Atividades</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
                   </ul>
                 </li>
@@ -105,9 +102,6 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>Atividades">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>Atas">Atas</a></li>
-                    <li><a class="dropdown-item" href="#">algo2</a></li>
-                    <li><a class="dropdown-item" href="#">algo3</a></li>
-                    <li><a class="dropdown-item" href="#">algo4</a></li>
                   </ul>
                 </li>
 
@@ -118,6 +112,7 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividades">Atividades</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroTransacao">Financeiro</a></li>
                   </ul>
                 </li>
                 

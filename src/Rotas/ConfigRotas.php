@@ -14,6 +14,7 @@
     /* CONTROLE */
     Rotas::add('/CadastroUser', 'View/cadastroUser.php');
     Rotas::add('/CadastroAtas', 'View/cadastroAtas.php');
+    Rotas::add('/CadastroTransacao', 'View/cadastroTransacao.php');
 
     /* PERFIL */
     Rotas::add('/Login', 'View/login.php');
