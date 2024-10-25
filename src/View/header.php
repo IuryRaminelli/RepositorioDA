@@ -1,3 +1,7 @@
+<?php
+  $current_page = basename($_SERVER['REQUEST_URI'], ".php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,14 +36,14 @@
               }
               if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") :
               ?>
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></l>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Sobre' ? 'active' : '' ?>" href="<?=HOME?>Sobre">Sobre</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Membros</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Membros' ? 'active' : '' ?>" href="<?=HOME?>Membros">Membros</a></li>
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Navegar
-                  </a>
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['Data', 'Autores', 'Titulo', 'Assunto', 'Tipo']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Navegar
+                </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Data</a></li>
                     <li><a class="dropdown-item" href="#">Autores</a></li>
@@ -50,9 +54,9 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Documentos
-                  </a>
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['Atividades', 'Atas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Documentos
+                </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>Atividades">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>Atas">Atas</a></li>
@@ -60,9 +64,9 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Controle
-                  </a>
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroEstatuto', 'CadastroUser', 'CadastroTransacao', 'CadastroAtividades', 'CadastroAtas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Controle
+                </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroEstatuto">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroUser">Membros</a></li>
@@ -72,20 +76,20 @@
                   </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Financeiro">Financeiro</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
 
               <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") : ?>
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Sobre' ? 'active' : '' ?>" href="<?=HOME?>Sobre">Sobre</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Membros</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Membros' ? 'active' : '' ?>" href="<?=HOME?>Membros">Membros</a></li>
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Navegar
-                  </a>
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['Data', 'Autores', 'Titulo', 'Assunto', 'Tipo']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Navegar
+                </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Data</a></li>
                     <li><a class="dropdown-item" href="#">Autores</a></li>
@@ -96,9 +100,9 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Documentos
-                  </a>
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['Estatuto', 'Atas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Documentos
+                </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>Atividades">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>Atas">Atas</a></li>
@@ -106,9 +110,9 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Controle
-                  </a>
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroAtividades', 'CadastroAtas', 'CadastroTransacao']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Controle
+                </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividades">Atividades</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
@@ -116,20 +120,21 @@
                   </ul>
                 </li>
                 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Financeiro">Financeiro</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
 
               <?php if (!isset($_SESSION["USER_LOGIN"])) : ?>
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Sobre">Sobre</a></li>
-                
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Membros">Membros</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Sobre' ? 'active' : '' ?>" href="<?=HOME?>Sobre">Sobre</a></li>
+
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Membros' ? 'active' : '' ?>" href="<?=HOME?>Membros">Membros</a></li>
+
 
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Navegar
-                  </a>
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['Data', 'Autores', 'Titulo', 'Assunto', 'Tipo']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Navegar
+                </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Data</a></li>
                     <li><a class="dropdown-item" href="#">Autores</a></li>
@@ -139,9 +144,9 @@
                   </ul>
                 </li>
                 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Financeiro">Financeiro</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
 
-                <li class="nav-item"><a class="nav-link" href="<?=HOME?>Contato">Contato</a></li>
+                <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
             </ul>
             <ul class="navbar-nav">
