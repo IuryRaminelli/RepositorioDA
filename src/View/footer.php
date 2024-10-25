@@ -44,11 +44,11 @@
 <body>
     <footer class="pt-5 my-5 text-body-secondary border-top">
         <div class="row d-flex justify-content-between align-items-center">
-            <div class="col-md-4 text-right">
+            <div class="col-md-3 text-right">
                 Todos os direitos reservados. &copy; 2024
             </div>
 
-            <div class="col-md-4 text-center mx-auto footer-logo">
+            <div class="col-md-3 text-center mx-auto footer-logo">
                 <a href="https://sig.iffarroupilha.edu.br/sigaa/public/curso/portal.jsf?id=76320&lc=pt_BR">
                     <img src="src/View/img/logoo-ads.png" alt="Logo ADS" width="120" height="120">
                 </a>
@@ -57,8 +57,8 @@
                 </a>
             </div>
 
-            <div class="col-md-4 text-left">
-                Desenvolvido por <a href="https://github.com/IuryRaminelli" class="developed-by">Iury Raminelli</a> - ADS18
+            <div class="col-md-3 text-left">
+                Desenvolvido por <a href="https://github.com/IuryRaminelli" class="developed-by">Iury Raminelli</a>
             </div>
         </div>
     </footer>
