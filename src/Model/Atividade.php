@@ -1,6 +1,7 @@
 <?php
     class Atividade{
         private $idAtiv;
+        private $imagem;
         private $nome;
         private $descricao;
         private $dia;
@@ -20,6 +21,12 @@
         } 
         public function setIdAtiv($idAtiv){
             return $this->idAtiv = $idAtiv;
+        }
+        public function getImagem(){
+            return $this->imagem;
+        } 
+        public function setImagem($imagem){
+            return $this->imagem = $imagem;
         }
         public function getNome(){
             return $this->nome;
@@ -46,7 +53,7 @@
             return $this->local = $local;
         }
         public function __toString(){
-            return "idAtiv: " . $this->idAtiv . " nome: " . $this->nome . " descricao: " . $this->descricao . " dia: " . $this->dia . " local: " . $this->local ."<br><br>";
+            return "idAtiv: " . $this->idAtiv . "imagem: " . $this->imagem . " nome: " . $this->nome . " descricao: " . $this->descricao . " dia: " . $this->dia . " local: " . $this->local ."<br><br>";
         } 
     }
 ?>

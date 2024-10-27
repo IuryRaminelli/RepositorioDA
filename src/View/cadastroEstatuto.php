@@ -2,8 +2,8 @@
 session_start();
 if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com" || $_SESSION["USER_LOGIN"] == "administrador@teste.com") {
 
-    include_once __DIR__ . "/../Controller/ConAtas.php";
-    include_once __DIR__ . "/../Model/Atas.php";
+    include_once __DIR__ . "/../Controller/ConEstatuto.php";
+    include_once __DIR__ . "/../Model/Estatuto.php";
     include_once __DIR__ . '/../Rotas/Constantes.php';
 
 
@@ -18,20 +18,20 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@
         
             if (move_uploaded_file($_FILES["arquivo"]["tmp_name"], $target_file)){
                 
-                $arrrayCIA = array("dia" => $_POST['dia'],
+                $arrrayCIA = array("ano" => $_POST['ano'],
                                 "descricao" => $_POST['descricao'],
                                 "arquivo" => $target_file
                 );
 
 
-                $ConAtas = new ConAtas();
-                $Atas = new Atas($arrrayCIA);
+                $ConEstatuto = new ConEstatuto();
+                $Estatuto = new Estatuto($arrrayCIA);
 
 
-                $ConAtas->insertAtas($Atas);
-                echo "<script>alert('Ata cadastrada com sucesso.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
+                $ConEstatuto->insertEstatuto($Estatuto);
+                echo "<script>alert('Estatuto cadastrada com sucesso.'); window.location.href = '" . HOME . "CadastroEstatuto';</script>";
             }else {
-                echo "<script>alert('Desculpe, houve um erro ao enviar seu arquivo.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
+                echo "<script>alert('Desculpe, houve um erro ao enviar seu arquivo.'); window.location.href = '" . HOME . "CadastroEstatuto';</script>";
             }
         }
     }
@@ -65,17 +65,12 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@
     </div>
 
     <br><br>
-    <div align="center">
-      <h1>MODELO DE ATA</h1>
-      <a href="https://docs.google.com/document/d/14QzHX1SWVKHsl5BOb-QgkERbL9iRTDpeJMxkw__-yqg/edit?usp=sharing">clique aqui.</a>
-    </div>
-    <br><br><br>
 
-    <h1 align="center">CADASTRAR ATA</h1><br>
+    <h1 align="center">CADASTRAR ESTATUTO</h1><br>
     <div class="container" style="width: 40%;">
-    <form align="center" action="<?= HOME ?>CadastroAtas" method="POST" enctype="multipart/form-data">
-                <label for="dia">Data</label>
-                <input type="date" class="form-control" name="dia" autofocus="true"/><br>
+    <form align="center" action="<?= HOME ?>CadastroEstatuto" method="POST" enctype="multipart/form-data">
+                <label for="ano">Ano</label>
+                <input type="number" class="form-control" name="ano" autofocus="true"/><br>
                 <label for="descricao">Descrição</label>
                 <input type="text" class="form-control" name="descricao" placeholder="Digite uma Descrição"/><br>
                 <label for="arquivo">Arquivo</label>

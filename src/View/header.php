@@ -58,7 +58,7 @@
                   Documentos
                 </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="<?=HOME?>Atividades">Estatuto</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Estatuto">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>Atas">Atas</a></li>
                   </ul>
                 </li>
@@ -104,7 +104,7 @@
                   Documentos
                 </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="<?=HOME?>Atividades">Estatuto</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>Estatuto">Estatuto</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>Atas">Atas</a></li>
                   </ul>
                 </li>

@@ -10,6 +10,7 @@
 
     /* DOCUMENTOS */
     Rotas::add('/Atas', 'View/atas.php');
+    Rotas::add('/Estatuto', 'View/estatuto.php');
 
     /* CONTROLE */
     Rotas::add('/CadastroUser', 'View/cadastroUser.php');

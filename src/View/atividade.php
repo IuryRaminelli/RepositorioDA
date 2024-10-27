@@ -42,29 +42,28 @@
 
     ?>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Dia</th>
-                <th scope="col">Local</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php 
-                foreach ($lista as $atividade){
-                    $atividade = new Atividade($atividade);
-                    echo '<tr>
-                        <td>' . $atividade->getNome() . '</td>
-                        <td>' . $atividade->getDescricao() . '</td>
-                        <td>' . $atividade->getDia() . '</td>
-                        <td>' . $atividade->getLocal() . '</td>
-                    </tr>';
-                }
-            ?>
-        </tbody>
-    </table>
+<div class="row">
+    <?php foreach ($lista as $atividade): ?>
+      <?php $atividade = new Atividade($atividade); ?>
+      <div class="col-md-6 mb-4"> <!-- Define duas colunas por linha em telas médias ou maiores -->
+        <div class="card card-custom h-100">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="<?= $atividade->getImagem(); ?>" class="img-fluid rounded-start" alt="<?= $atividade->getNome(); ?>">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body card-body-custom">
+                <h5 class="card-title card-title-custom"><?= $atividade->getNome(); ?></h5>
+                <p class="card-text"><?= $atividade->getDescricao(); ?></p>
+                <p class="card-text"><small class="text-muted text-muted-custom"><?= $atividade->getLocal(); ?></small></p>
+                <p class="card-text"><small class="text-muted text-muted-custom"><?= $atividade->getDia(); ?></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
     <br><br>
     <?php
       include_once 'footer.php';
