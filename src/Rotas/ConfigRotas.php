@@ -3,10 +3,12 @@
 
     /* NORMAL */
     Rotas::add('/Home', '/View/home.php');
+    Rotas::add('/Home2', '/View/home2.php');
     Rotas::add('/Sobre', 'View/sobre.php');
     Rotas::add('/Atividade', 'View/atividade.php');
     Rotas::add('/Membros', 'View/membros.php');
     Rotas::add('/Financeiro', 'View/financeiro.php');
+    Rotas::add('/Contato', 'View/contato.php');
 
     /* DOCUMENTOS */
     Rotas::add('/Atas', 'View/atas.php');

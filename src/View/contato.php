@@ -11,7 +11,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
   <title>Repositório Diretório ADS</title>
+  <style>
+        .social-links {
+            margin-top: 15px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .social-links a.instagram {
+            background-color: #E1306C;
+        }
+        .social-links a.facebook {
+            background-color: #3b5998;
+        }
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,26 +62,24 @@
     <br><br>
 
     <h1>Fale Conosco</h1>
-    <p>Estamos aqui para ajudar! Se você tiver alguma dúvida, sugestão ou precisar de suporte, entre em contato conosco através do formulário abaixo.</p>
+    <p>Estamos aqui para ajudar! Se você tiver alguma dúvida, sugestão ou precisar de suporte, entre em contato conosco através de algum dos perfis.</p>
 
-    <div class="row mt-5">
-      <form>
-        <label for="nome">Nome</label>
-        <input type="text" class="form-control" id="nome" placeholder="Seu nome">
-        <br>
-        <label for="email">E-mail</label>
-        <input type="email" class="form-control" id="email" placeholder="Seu e-mail">
-        <br>
-        <label for="mensagem">Mensagem</label>
-        <textarea class="form-control" id="mensagem" rows="5" placeholder="Digite sua mensagem"></textarea>
-        <br>
-        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-      </form>
+    <br>
+    <h3>Diretório</h3>
+    <div class="social-links">
+      <a href="https://www.facebook.com/diretorioads/" class="facebook"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
+
+    <br>
+    <h3>Curso</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/ads.svs/" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://www.facebook.com/ADS.IFFar.SVS/" class="facebook"><i class="fab fa-facebook"></i> Facebook</a>
     </div>
 
     <?php
-        include_once 'footer.php';
-      ?>
+      include_once 'footer.php';
+    ?>
   </div>
 </body>
 
