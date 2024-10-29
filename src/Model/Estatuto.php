@@ -1,6 +1,6 @@
 <?php
     class Estatuto{
-        private $idEstat;
+        private $id;
         private $ano;
         private $descricao;
         private $arquivo;
@@ -15,10 +15,10 @@
             }
         }
         public function getIdEstat(){
-            return $this->idEstat;
+            return $this->id;
         } 
-        public function setIdEstat($idEstat){
-            return $this->idEstat = $idEstat;
+        public function setIdEstat($id){
+            return $this->id = $id;
         }
         public function getAno(){
             return $this->ano;
@@ -41,7 +41,7 @@
         }
         
         public function __toString(){
-            return "idEstat: " . $this->idEstat . " ano: " . $this->ano . " descricao: " . $this->descricao . " arquivo: " . $this->arquivo . "<br><br>";
+            return "idEstat: " . $this->id . " ano: " . $this->ano . " descricao: " . $this->descricao . " arquivo: " . $this->arquivo . "<br><br>";
         } 
     }
 ?>

@@ -1,5 +1,22 @@
 <?php
-    include_once __DIR__ . '/../Rotas/Constantes.php';
+session_start();
+include_once "src/Controller/ConEstatuto.php";
+include_once "src/Model/Estatuto.php";
+
+$ConEstatuto = new ConEstatuto();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Excluir') {
+    $idEstatuto = $_POST["id_est"];
+
+    if ($ConEstatuto->deleteEstatuto($idEstatuto)) {
+        echo "<script>alert('Excluído com sucesso!'); window.location.href = '" . HOME . "Estatuto';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Erro ao excluir!');</script>";
+    }
+}
+
+if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_SESSION["USER_LOGIN"] == "admin")) {
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +66,11 @@
                 <th scope="col">Ano</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Arquivo</th>
+                <?php
+                    if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
+                        echo '<th scope="col">Excluir</th>';
+                    }
+                ?>
             </tr>
         </thead>
         <tbody>
@@ -62,11 +84,20 @@
                         <td>
                             <a href="'. $estatuto->getArquivo() .'" target="_blank">
                                 <img src="src/View/img/pdf.png" width="28" height="28" alt="">
-                            </a>
-                        </td>
-                    </tr>';
-                }
-            ?>
+                            </a>';
+            if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
+                echo '<td>
+                        <form action="' . HOME . 'Estatuto' . '" method="POST" style="display:inline;">
+                            <input type="hidden" name="id_est" value="' . $estatuto->getIdEstat() . '">
+                            <button type="submit" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta ata?\');">
+                                <img src="src/View/img/deletar.png" width="28" height="28" alt="">
+                            </button>
+                        </form>
+                    </td>';
+            }
+            echo '</tr>';
+        }
+        ?>
         </tbody>
     </table>
 
@@ -85,3 +116,8 @@
 </body>
 
 </html>
+<?php
+} else {
+    echo "<h1>404 Não possui acesso.</h1>";
+}
+?>

@@ -9,12 +9,13 @@
         }
         public function insertUser(User $User){
             $pstmt = $this->conexao->prepare("INSERT INTO user 
-            (nome, email, senha, telefone) VALUES 
-            (?,?,?,?)");
+            (nome, email, senha, telefone, tipo) VALUES 
+            (?,?,?,?,?)");
             $pstmt->bindValue(1, $User->getNome());
             $pstmt->bindValue(2, $User->getEmail());
             $pstmt->bindValue(3, $User->getSenha());
             $pstmt->bindValue(4, $User->getTelefone());
+            $pstmt->bindValue(5, $User->getTipo());
             $pstmt->execute();
             return $pstmt;
         }

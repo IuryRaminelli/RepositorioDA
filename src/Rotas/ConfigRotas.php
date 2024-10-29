@@ -21,6 +21,13 @@
     Rotas::add('/CadastroEstatuto', 'View/cadastroEstatuto.php');
     Rotas::add('/CadastroAtividade', 'View/cadastroAtividade.php');
 
+    /* EDITAR */
+    Rotas::add('/CadastroUser', 'View/cadastroUser.php');
+    Rotas::add('/ControleAtas', 'View/controleAtas.php');
+    Rotas::add('/CadastroTransacao', 'View/cadastroTransacao.php');
+    Rotas::add('/CadastroEstatuto', 'View/cadastroEstatuto.php');
+    Rotas::add('/CadastroAtividade', 'View/cadastroAtividade.php');
+
     /* PERFIL */
     Rotas::add('/Login', 'View/login.php');
     Rotas::add('/Perfil', 'View/perfil.php');

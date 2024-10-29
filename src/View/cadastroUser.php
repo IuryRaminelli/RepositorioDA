@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") {
+if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
 
     include_once __DIR__ . "/../Controller/ConUser.php";
     include_once __DIR__ . "/../Model/User.php";
@@ -12,6 +12,7 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@
             "email" => $_POST['email'],
             "senha" => $_POST['senha'],
             "telefone" => $_POST['telefone'],
+            "tipo" => $_POST['tipo'],
         );
 
         // Validação
@@ -65,7 +66,7 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@
 
     <br><br>
     
-    <h1 align="center">CADASTRAR MEMBROS</h1><br>
+    <h1 align="center">CADASTRAR USUÁRIO</h1><br>
     <div class="container" style="width: 40%;">
     <form align="center" action="<?= HOME ?>CadastroUser" method="POST">
                 <label for="nome">Nome</label>
@@ -74,6 +75,12 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@
                 <input type="email" class="form-control" name="email" placeholder="Digite um e-mail"/><br>
                 <label for="telefone">Telefone</label>
                 <input type="tel" class="form-control" name="telefone" placeholder="Digite um telefone"/><br>
+                <label for="tipo">Tipo</label>
+                <select class="form-control" name="tipo">
+                    <option value="membro">Selecione um tipo:</option>
+                    <option value="membro">Membro</option>
+                    <option value="admin">Administrador</option>
+                </select><br>
                 <label for="senha">Senha</label>
                 <input type="password" class="form-control" name="senha" placeholder="Digite uma senha"/><br>
                 <input type="submit" value="Cadastrar" class="btn" name="cadastro" />

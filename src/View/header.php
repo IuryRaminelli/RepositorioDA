@@ -34,7 +34,7 @@
               if (session_status() == PHP_SESSION_NONE) {
                 session_start();
               }
-              if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "administrador@teste.com") :
+              if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") :
               ?>
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Sobre' ? 'active' : '' ?>" href="<?=HOME?>Sobre">Sobre</a></li>
 
@@ -56,7 +56,7 @@
                 </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroEstatuto">Estatuto</a></li>
-                    <li><a class="dropdown-item" href="<?=HOME?>CadastroUser">Membros</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroUser">Usuário</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroTransacao">Financeiro</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividade">Atividades</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
@@ -70,7 +70,7 @@
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
 
-              <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "administrador@teste.com") : ?>
+              <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin") : ?>
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Sobre' ? 'active' : '' ?>" href="<?=HOME?>Sobre">Sobre</a></li>
 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Membros' ? 'active' : '' ?>" href="<?=HOME?>Membros">Membros</a></li>

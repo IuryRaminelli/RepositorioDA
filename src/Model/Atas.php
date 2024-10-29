@@ -1,6 +1,6 @@
 <?php
     class Atas{
-        private $idAtas;
+        private $id;
         private $dia;
         private $descricao;
         private $arquivo;
@@ -15,10 +15,10 @@
             }
         }
         public function getIdAtas(){
-            return $this->idAtas;
+            return $this->id;
         } 
-        public function setIdAtas($idAtas){
-            return $this->idAtas = $idAtas;
+        public function setIdAtas($id){
+            return $this->id = $id;
         }
         public function getDia(){
             return $this->dia;
@@ -41,7 +41,7 @@
         }
         
         public function __toString(){
-            return "idAtas: " . $this->idAtas . " dia: " . $this->dia . " descricao: " . $this->descricao . " arquivo: " . $this->arquivo . "<br><br>";
+            return "idAtas: " . $this->id . " dia: " . $this->dia . " descricao: " . $this->descricao . " arquivo: " . $this->arquivo . "<br><br>";
         } 
     }
 ?>

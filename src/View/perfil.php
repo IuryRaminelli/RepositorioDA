@@ -4,7 +4,7 @@ include_once "src/Controller/ConUser.php";
 include_once "src/Model/User.php";
 
 $ConUser = new ConUser();
-$linha = $ConUser->selectLoginUser1($_SESSION["USER_LOGIN"]);
+$linha = $ConUser->selectLoginUser1($_SESSION["USER_LOGIN2"]);
 
 if($linha != null){
     $user = new User($linha[0]);
@@ -48,6 +48,8 @@ if($linha != null){
                 <input type="email" class="form-control" name="email" value="<?php echo $user->getEmail(); ?>" disabled=""/><br>
                 <label for="telefone">Telefone</label>
                 <input type="tel" class="form-control" name="telefone" value="<?php echo $user->getTelefone(); ?>" disabled=""/><br>
+                <label for="tipo">Tipo</label>
+                <input type="text" class="form-control" name="tipo" value="<?php echo $user->getTipo(); ?>" disabled=""/><br>
                 <label for="senha">Senha</label>
                 <input type="password" class="form-control" name="senha" value="********" disabled=""/>
             </form>

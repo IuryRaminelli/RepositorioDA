@@ -2,6 +2,7 @@
 include_once __DIR__ . "/../Controller/ConUser.php";
 include_once __DIR__ . "/../Model/User.php";
 include_once __DIR__ . '/../Rotas/Constantes.php';
+
 if (isset($_POST['email']) && isset($_POST['senha'])) {
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -10,23 +11,30 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
   $ConUser = new ConUser();
   $linha = $ConUser->selectLoginUser1($_POST['email']);
 
+  // Verifica se a conta existe
   if ($linha == null) {
     echo "<script>alert('Desculpe, essa conta não existe.'); window.location.href = '/RepositorioDA/Login';</script>";
   } else {
-    if ($linha != null) {
-      $user = new User($linha[0]);
-      if (($user->getEmail() == $_POST['email']) && ($user->getSenha() == $_POST['senha'])) {
-        $_SESSION["USER_LOGIN"] = $_POST['email'];
-        header("Location: " . HOME . "Home");
-        exit;
-      } else {
-        echo "<script>alert('Erro!'); window.location.href = '/RepositorioDA/Login';</script>";
-
-      }
+    // Instancia o usuário com os dados retornados
+    $user = new User($linha[0]);
+    
+    // Verifica se a senha está correta usando password_verify se as senhas estão criptografadas
+    if (($user->getEmail() == $_POST['email']) && ($user->getSenha() == $_POST['senha'])) {
+      // Armazena o tipo do usuário na sessão
+      $_SESSION["USER_LOGIN"] = $user->getTipo();
+      $_SESSION["USER_LOGIN2"] = $_POST['email'];
+      
+      // Redireciona para a página Home
+      header("Location: " . HOME . "Home");
+      exit;
+    } else {
+      // Se a senha estiver incorreta, mostra um alerta
+      echo "<script>alert('Erro! E-mail ou senha incorretos.'); window.location.href = '/RepositorioDA/Login';</script>";
     }
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
