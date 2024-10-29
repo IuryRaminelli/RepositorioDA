@@ -1,5 +1,20 @@
 <?php
-    include_once __DIR__ . '/../Rotas/Constantes.php';
+session_start();
+include_once "src/Controller/ConAtividade.php";
+include_once "src/Model/Atividade.php";
+
+$ConAtividade = new ConAtividade();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Excluir') {
+    $idAtividade = $_POST["id_ativ"];
+
+    if ($ConAtividade->deleteAtividade($idAtividade)) {
+        echo "<script>alert('Excluído com sucesso!'); window.location.href = '" . HOME . "Atividade';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Erro ao excluir!');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +72,18 @@
                 <p class="card-text"><?= $atividade->getDescricao(); ?></p>
                 <p class="card-text"><small class="text-muted text-muted-custom"><?= $atividade->getLocal(); ?></small></p>
                 <p class="card-text"><small class="text-muted text-muted-custom"><?= $atividade->getDia(); ?></small></p>
+                <?php
+                if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
+                ?>
+                <p class="card-text"><small class="text-muted text-muted-custom"><?php echo '<form action="' . HOME . 'Atividade' . '" method="POST" style="display:inline;">
+                            <input type="hidden" name="id_ativ" value="' . $atividade->getIdAtiv() . '">
+                            <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta atividade?\');">
+                                <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
+                            </button>
+                        </form>'; ?></small></p>
+                <?php
+                }
+                ?>
               </div>
             </div>
           </div>

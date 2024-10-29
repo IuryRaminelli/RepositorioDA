@@ -81,16 +81,19 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
                     echo '<tr>
                         <td>' . $estatuto->getAno() . '</td>
                         <td>' . $estatuto->getDescricao() . '</td>
-                        <td>
-                            <a href="'. $estatuto->getArquivo() .'" target="_blank">
+                    <td>
+                        <a href="' . $estatuto->getArquivo() . '" target="_blank">
+                            <button type="submit" class="btn">
                                 <img src="src/View/img/pdf.png" width="28" height="28" alt="">
-                            </a>';
+                            </button>
+                        </a>
+                    </td>';
             if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
                 echo '<td>
                         <form action="' . HOME . 'Estatuto' . '" method="POST" style="display:inline;">
                             <input type="hidden" name="id_est" value="' . $estatuto->getIdEstat() . '">
-                            <button type="submit" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta ata?\');">
-                                <img src="src/View/img/deletar.png" width="28" height="28" alt="">
+                            <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir este estatuto?\');">
+                                <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
                             </button>
                         </form>
                     </td>';

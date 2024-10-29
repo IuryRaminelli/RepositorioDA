@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/10/2024 às 21:32
+-- Tempo de geração: 29/10/2024 às 19:58
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -39,8 +39,7 @@ CREATE TABLE `atas` (
 --
 
 INSERT INTO `atas` (`id`, `dia`, `descricao`, `arquivo`) VALUES
-(1, '2024-10-14', 'teste', 'src/View/img/simulado_COBIT.pdf'),
-(2, '2024-10-25', 'teste2', 'src/View/img/50_Code_race_Sistema_de_Informação.pdf');
+(5, '2024-10-31', 'qqq', 'src/View/img/Conceitos_Software_Livre.pdf');
 
 -- --------------------------------------------------------
 
@@ -62,9 +61,7 @@ CREATE TABLE `atividade` (
 --
 
 INSERT INTO `atividade` (`id`, `imagem`, `nome`, `descricao`, `dia`, `local`) VALUES
-(1, 'src/View/img/3e3166157ec5aab796cadcbc4de31351.jpg', '16° SeTEIC', 'Semana Academica foda-se', '2024-10-27', 'IFFar-SVS'),
 (2, 'src/View/img/logo-ads.png', 'Teste', 'teste2.0', '2024-10-30', 'Segredo'),
-(3, 'src/View/img/pdf.png', 'teste2', 'teste2', '2024-10-06', 'São Vicente do Sul'),
 (4, 'src/View/img/PHOTO-2024-08-31-09-31-52.jpg', 'CodeRace', 'ADS participando do evento da CodeRace da AMF.', '2024-08-21', 'Faculdade AMF');
 
 -- --------------------------------------------------------
@@ -85,7 +82,8 @@ CREATE TABLE `estatuto` (
 --
 
 INSERT INTO `estatuto` (`id`, `ano`, `descricao`, `arquivo`) VALUES
-(1, '2024', 'teste', 'src/View/img/Ata_de_Posse_do_Centro_Acadêmico.docx');
+(3, '2024', 'aaa', 'src/View/img/01_-_Aula_-_conceitos_basicos.pdf'),
+(4, '2023', 'teste2', 'src/View/img/CDI.pdf');
 
 -- --------------------------------------------------------
 
@@ -120,17 +118,18 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `senha` varchar(30) NOT NULL,
-  `telefone` varchar(30) NOT NULL
+  `senha` varchar(255) NOT NULL,
+  `telefone` varchar(20) NOT NULL,
+  `tipo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `user`
 --
 
-INSERT INTO `user` (`id`, `nome`, `email`, `senha`, `telefone`) VALUES
-(1, 'Administrador', 'administrador@teste.com', '@admin24', '123'),
-(2, 'Thiago Ryan', 'raminelliiury4@gmail.com', '123', '1212');
+INSERT INTO `user` (`id`, `nome`, `email`, `senha`, `telefone`, `tipo`) VALUES
+(1, 'Adminstrador', 'administrador@teste.com', '123', '51998754368', 'admin'),
+(2, 'IURY RAMINELLI', 'raminelliiury4@gmail.com', '123', '51998754368', 'membro');
 
 --
 -- Índices para tabelas despejadas
@@ -164,8 +163,7 @@ ALTER TABLE `transacao`
 -- Índices de tabela `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -175,7 +173,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de tabela `atas`
 --
 ALTER TABLE `atas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `atividade`
@@ -187,7 +185,7 @@ ALTER TABLE `atividade`
 -- AUTO_INCREMENT de tabela `estatuto`
 --
 ALTER TABLE `estatuto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `transacao`

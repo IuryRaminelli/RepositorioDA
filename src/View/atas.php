@@ -74,17 +74,18 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
                     <td>' . $atas->getDescricao() . '</td>
                     <td>
                         <a href="' . $atas->getArquivo() . '" target="_blank">
-                            <img src="src/View/img/pdf.png" width="28" height="28" alt="">
+                            <button type="submit" class="btn">
+                                <img src="src/View/img/pdf.png" width="28" height="28" alt="">
+                            </button>
                         </a>
                     </td>';
             if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
                 echo '<td>
                         <form action="' . HOME . 'Atas' . '" method="POST" style="display:inline;">
                             <input type="hidden" name="id_ata" value="' . $atas->getIdAtas() . '">
-                            <button type="submit" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta ata?\');">
-                                <img src="src/View/img/deletar.png" width="28" height="28" alt="">
+                            <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta ata?\');">
+                                <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
                             </button>
-                        </form>
                     </td>';
             }
             echo '</tr>';
