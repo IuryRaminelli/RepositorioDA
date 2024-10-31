@@ -21,10 +21,13 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
 
 
               if ($ConAtividade->insertAtividade($Atividade)) {
+                $nomeAtividade = $_POST['nome'];
+                $_SESSION['nome'] = $nomeAtividade;
                 header("Location: " . HOME . "CadastroImagem");
+                exit();
             } else {
-              echo "<script>alert('Desculpe, houve um erro!'); window.location.href = '" . HOME . "CadastroAtividade';</script>";
-            }
+                echo "<script>alert('Desculpe, houve um erro!'); window.location.href = '" . HOME . "CadastroAtividade';</script>";
+            }      
           }
 ?>
 

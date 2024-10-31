@@ -16,7 +16,7 @@
         public function getIdImagem(){
             return $this->id;
         } 
-        public function setIdEstat($id){
+        public function setIdImagem($id){
             return $this->id = $id;
         }
         public function getIdAtiv(){

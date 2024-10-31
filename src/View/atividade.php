@@ -53,18 +53,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
         include_once __DIR__ . '/../Model/Atividade.php';
 
         $ConAtividade = new ConAtividade();
-        $lista = $ConAtividade->selectAllAtividade();
+        $listaAtividades = $ConAtividade->selectAllAtividade();
 
+        include_once __DIR__ . '/../Controller/ConImagem.php';
+        include_once __DIR__ . '/../Model/Imagem.php';
+
+        $ConImagem = new ConImagem();
     ?>
 
 <div class="row">
-    <?php foreach ($lista as $atividade): ?>
+    <?php foreach ($listaAtividades as $atividade): ?>
       <?php $atividade = new Atividade($atividade); ?>
-      <div class="col-md-6 mb-4"> <!-- Define duas colunas por linha em telas médias ou maiores -->
+      <div class="col-md-6 mb-4">
         <div class="card card-custom h-100">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="<?= $atividade->getImagem(); ?>" class="img-fluid rounded-start" alt="<?= $atividade->getNome(); ?>">
+              <?php 
+              $imagens = $ConImagem->selectAllImagem($atividade->getNome());
+              ?>
+              <div id="carouselExampleControls<?= $atividade->getIdAtiv(); ?>" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <?php foreach ($imagens as $index => $imagem): ?>
+                    <?php $imagem = new Imagem($imagem); ?>
+                    <div class="carousel-item <?= $index === 0 ? 'active' : ''; ?>">
+                      <img src="<?= $imagem->getArquivo(); ?>" class="d-block w-100" alt="<?= $atividade->getNome(); ?>">
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls<?= $atividade->getIdAtiv(); ?>" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls<?= $atividade->getIdAtiv(); ?>" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
             <div class="col-md-8">
               <div class="card-body card-body-custom">
