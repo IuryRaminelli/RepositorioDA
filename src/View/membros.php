@@ -82,7 +82,27 @@
                 <b>Maurício Carvalho Cogo</b>
             </div>
             <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                ...
+            <?php
+                    /* FAZER COM O BANCO DE DADOS */
+                ?>
+                <h3>Presidente:</h3>
+                <b>João Manoel Carvalho Lopes</b>
+                <br><br>
+
+                <h3>Vice-presidente</h3>
+                <b>Arthur Guarizi De Godoy</b>
+                <br><br>
+
+                <h3>Secretário(a)</h3>
+                <b>Joseane Dias de Oliveira</b>
+                <br><br>
+
+                <h3>Vice-secretário(a)</h3>
+                <b>Bruna Flores Righes</b>
+                <br><br>
+
+                <h3>Tesoureiro(a)</h3>
+                <b>Samara Librelotto Winkelmann</b>
             </div>
             <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
                 ...
