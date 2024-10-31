@@ -7,37 +7,25 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
     include_once __DIR__ . '/../Rotas/Constantes.php';
 
     if(isset($_POST['cadastro'])){
-      if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])){
-          $target_dir = "src/View/img/";
-          $target_file = $target_dir . basename($_FILES["imagem"]["name"]);
-          $uploadOk = 1;
-          $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-
-      
-          if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file)){
-              
               $arrrayCIA = array(
                               
-                              "imagem" => $target_file,
                               "nome" => $_POST['nome'],
                               "descricao" => $_POST['descricao'],
                               "dia" => $_POST['dia'],
                               "local" => $_POST['local'],
               );
 
-
               $ConAtividade = new ConAtividade();
               $Atividade = new Atividade($arrrayCIA);
 
 
-              $ConAtividade->insertAtividade($Atividade);
-              echo "<script>alert('Cadastrada com sucesso.'); window.location.href = '" . HOME . "CadastroAtividade';</script>";
-          }else {
-              echo "<script>alert('Desculpe, houve um erro ao enviar sua imagem.'); window.location.href = '" . HOME . "CadastroAtividade';</script>";
+              if ($ConAtividade->insertAtividade($Atividade)) {
+                header("Location: " . HOME . "CadastroImagem");
+            } else {
+              echo "<script>alert('Desculpe, houve um erro!'); window.location.href = '" . HOME . "CadastroAtividade';</script>";
+            }
           }
-      }
-  }
 ?>
 
 <!DOCTYPE html>
@@ -70,21 +58,41 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
     <br><br>
     
     <h1 align="center">CADASTRAR ATIVIDADE</h1><br>
-    <div class="container" style="width: 40%;">
-    <form align="center" action="<?= HOME ?>CadastroAtividade" method="POST" enctype="multipart/form-data">
-                <label for="imagem">Imagem</label>
-                <input type="file" class="form-control" name="imagem"/><br>
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" name="nome" placeholder="Digite um Nome"/><br>
-                <label for="descricao">Descrição</label>
-                <input type="text" class="form-control" name="descricao" placeholder="Digite uma Descrição"/><br>
-                <label for="dia">Data</label>
-                <input type="date" class="form-control" name="dia" autofocus="true"/><br>
-                <label for="local">Local</label>
-                <input type="text" class="form-control" name="local" placeholder="Digite um Local"/><br>
-                <input type="submit" value="Cadastrar" class="btn" name="cadastro" />
-            </form>
-    </div>
+<div class="container" style="width: 40%;">
+  <form align="center" action="<?= HOME ?>CadastroAtividade" method="POST" enctype="multipart/form-data">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" name="nome" placeholder="Digite um Nome"/><br>
+    
+    <label for="descricao">Descrição</label>
+    <input type="text" class="form-control" name="descricao" placeholder="Digite uma Descrição"/><br>
+    
+    <label for="dia">Data</label>
+    <input type="date" class="form-control" name="dia" autofocus="true"/><br>
+    
+    <label for="local">Local</label>
+    <input type="text" class="form-control" name="local" placeholder="Digite um Local"/><br>
+
+    <input type="submit" value="Próximo" class="btn" name="cadastro" />
+  </form>
+</div>
+
+<script>
+  function addFileInput() {
+    const fileContainer = document.getElementById('file-container');
+    const newFileInput = document.createElement('div');
+    newFileInput.classList.add('d-flex', 'align-items-center', 'mb-2');
+
+    newFileInput.innerHTML = `
+      <input type="file" class="form-control me-2" name="arquivo[]"/>
+      <button type="button" class="btn p-0" onclick="addFileInput()">
+        <img src="src/View/img/maisbranco.png" width="28" height="28" alt="">
+      </button>
+    `;
+
+    fileContainer.appendChild(newFileInput);
+  }
+</script>
+
     <?php include_once 'footer.php'; ?>
 </div>
 </body>

@@ -9,12 +9,11 @@
         }
         public function insertAtividade(Atividade $Atividade){
             $pstmt = $this->conexao->prepare("INSERT INTO atividade 
-            (imagem, nome, descricao, dia, local) VALUES (?,?,?,?,?)");
-            $pstmt->bindValue(1, $Atividade->getImagem());
-            $pstmt->bindValue(2, $Atividade->getNome());
-            $pstmt->bindValue(3, $Atividade->getDescricao());
-            $pstmt->bindValue(4, $Atividade->getDia());
-            $pstmt->bindValue(5, $Atividade->getLocal());
+            (nome, descricao, dia, local) VALUES (?,?,?,?)");
+            $pstmt->bindValue(1, $Atividade->getNome());
+            $pstmt->bindValue(2, $Atividade->getDescricao());
+            $pstmt->bindValue(3, $Atividade->getDia());
+            $pstmt->bindValue(4, $Atividade->getLocal());
             $pstmt->execute();
             return $pstmt;
         }
