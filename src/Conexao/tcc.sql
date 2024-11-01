@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31/10/2024 às 14:50
+-- Tempo de geração: 01/11/2024 às 22:28
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,8 @@ CREATE TABLE `atas` (
 --
 
 INSERT INTO `atas` (`id`, `dia`, `descricao`, `arquivo`) VALUES
-(5, '2024-10-31', 'qqq', 'src/View/img/Conceitos_Software_Livre.pdf');
+(5, '2024-10-31', 'qqq', 'src/View/img/Conceitos_Software_Livre.pdf'),
+(12, '2024-11-01', 'Aaa', 'src/View/img/Edital nº 142-2024 - Resultado final - BAAE 2024.pdf');
 
 -- --------------------------------------------------------
 
@@ -60,10 +61,8 @@ CREATE TABLE `atividade` (
 --
 
 INSERT INTO `atividade` (`id`, `nome`, `descricao`, `dia`, `local`) VALUES
-(2, 'Teste', 'teste2.0', '2024-10-30', 'Segredo'),
-(4, 'CodeRace', 'ADS participando do evento da CodeRace da AMF.', '2024-08-21', 'Faculdade AMF'),
-(6, 'IFF', 'Estatuto DAADS', '2232-03-21', 'IFFAR'),
-(7, 'sas', 'dsad', '2024-10-31', 'sadas');
+(17, 'CodeRace', 'A', '2024-11-01', 'Faculdade AMF'),
+(18, 'teste2', 'teste2', '2024-11-02', 'IFFAR');
 
 -- --------------------------------------------------------
 
@@ -83,8 +82,7 @@ CREATE TABLE `estatuto` (
 --
 
 INSERT INTO `estatuto` (`id`, `ano`, `descricao`, `arquivo`) VALUES
-(3, '2024', 'aaa', 'src/View/img/01_-_Aula_-_conceitos_basicos.pdf'),
-(4, '2023', 'teste2', 'src/View/img/CDI.pdf');
+(6, '2010', 'Estatuto DAADS', 'src/View/img/Estatutuo DAADS.pdf');
 
 -- --------------------------------------------------------
 
@@ -94,9 +92,19 @@ INSERT INTO `estatuto` (`id`, `ano`, `descricao`, `arquivo`) VALUES
 
 CREATE TABLE `imagem` (
   `id` int(11) NOT NULL,
-  `idativ` int(11) NOT NULL,
+  `idativ` varchar(255) NOT NULL,
   `arquivo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `imagem`
+--
+
+INSERT INTO `imagem` (`id`, `idativ`, `arquivo`) VALUES
+(13, 'CodeRace', 'src/View/img/PHOTO-2024-08-31-09-31-53.jpg'),
+(14, 'CodeRace', 'src/View/img/PHOTO-2024-08-31-09-31-52.jpg'),
+(15, 'teste2', 'src/View/img/CLASSEalgo.png'),
+(16, 'teste2', 'src/View/img/casoUsoADM.png');
 
 -- --------------------------------------------------------
 
@@ -195,25 +203,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de tabela `atas`
 --
 ALTER TABLE `atas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `atividade`
 --
 ALTER TABLE `atividade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `estatuto`
 --
 ALTER TABLE `estatuto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `transacao`
@@ -235,7 +243,7 @@ ALTER TABLE `user`
 -- Restrições para tabelas `imagem`
 --
 ALTER TABLE `imagem`
-  ADD CONSTRAINT `fkatividade` FOREIGN KEY (`idativ`) REFERENCES `atividade` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkatividade` FOREIGN KEY (`idativ`) REFERENCES `atividade` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
