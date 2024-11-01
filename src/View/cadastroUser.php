@@ -66,6 +66,20 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
 
     <br><br>
     
+    <div align="center">
+      <h1>USUÁRIOS</h1>
+      <?php
+      echo '
+        <form action="' . HOME . 'Usuarios' . '" method="POST" style="display:inline;">
+            <input type="hidden" name="id_ativ">Visualizar Usuários<br>
+            <button type="submit" class="btn" name="acao">
+                <img src="src/View/img/config.png" width="28" height="28" alt="">
+            </button>
+        </form>';
+      ?>
+    </div>
+    <br><br><br>
+
     <h1 align="center">CADASTRAR USUÁRIO</h1><br>
     <div class="container" style="width: 40%;">
     <form align="center" action="<?= HOME ?>CadastroUser" method="POST">

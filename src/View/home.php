@@ -36,7 +36,11 @@
 
     <br><br>
 
-    TELA PRINCIPAL QUE NÃO SEI OQ COLOCAR AQUI AINDA.
+    TELA PRINCIPAL QUE NÃO SEI OQ COLOCAR AQUI AINDA.<br>
+    - Últimas Atividades? 3 ultimas ou 2 ultimas.<br>
+    - Financeiro?<br>
+    - Notícias?<br>
+    - ..
 
     <?php
         include_once 'footer.php';

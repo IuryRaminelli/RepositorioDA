@@ -21,6 +21,7 @@
     Rotas::add('/CadastroEstatuto', 'View/cadastroEstatuto.php');
     Rotas::add('/CadastroAtividade', 'View/cadastroAtividade.php');
     Rotas::add('/CadastroImagem', 'View/cadastroImagem.php');
+    Rotas::add('/Usuarios', 'View/usuarios.php');
 
     /* EDITAR */
     Rotas::add('/CadastroUser', 'View/cadastroUser.php');
