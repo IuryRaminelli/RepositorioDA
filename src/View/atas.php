@@ -75,7 +75,7 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
                     <td>
                         <a href="' . $atas->getArquivo() . '" target="_blank">
                             <button type="submit" class="btn">
-                                <img src="src/View/img/pdf.png" width="28" height="28" alt="">
+                                <img src="src/View/img/documento.png" width="28" height="28" alt="">
                             </button>
                         </a>
                     </td>';
