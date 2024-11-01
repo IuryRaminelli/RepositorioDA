@@ -66,9 +66,25 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
 
     <br><br>
     <div align="center">
-      <h1>MODELO DE ATA</h1>
-      <a href="https://docs.google.com/document/d/14QzHX1SWVKHsl5BOb-QgkERbL9iRTDpeJMxkw__-yqg/edit?usp=sharing">clique aqui.</a>
-    </div>
+      <h1>MODELOS DE ATA</h1>
+      <?php
+      echo '
+        <input type="hidden" name="id_ativ">Alguma coisa<br>
+        <button type="submit" class="btn" name="acao" value="Excluir">
+          <a href="https://docs.google.com/document/d/14QzHX1SWVKHsl5BOb-QgkERbL9iRTDpeJMxkw__-yqg/edit?usp=sharing">
+            <img src="src/View/img/file-open.png" width="28" height="28" alt="">
+          </a>
+        </button>';
+        echo '<br><br>';
+        echo '
+        <input type="hidden" name="id_ativ">Alguma coisa2<br>
+        <button type="submit" class="btn" name="acao" value="Excluir">
+          <a href="https://docs.google.com/document/d/14QzHX1SWVKHsl5BOb-QgkERbL9iRTDpeJMxkw__-yqg/edit?usp=sharing">
+            <img src="src/View/img/file-open.png" width="28" height="28" alt="">
+          </a>
+        </button>';
+      ?>
+    </div>  
     <br><br><br>
 
     <h1 align="center">CADASTRAR ATA</h1><br>

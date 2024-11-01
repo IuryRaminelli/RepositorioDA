@@ -1,22 +1,22 @@
 <?php
 session_start();
-include_once "src/Controller/ConAtas.php";
-include_once "src/Model/Atas.php";
+include_once "src/Controller/ConUser.php";
+include_once "src/Model/User.php";
 
-$ConAtas = new ConAtas();
+$ConUser = new ConUser();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Excluir') {
-    $idAta = $_POST["id_ata"];
+    $idAta = $_POST["id_user"];
 
-    if ($ConAtas->deleteAta($idAta)) {
-        echo "<script>alert('Excluído com sucesso!'); window.location.href = '" . HOME . "Atas';</script>";
+    if ($ConUser->deleteUser($idAta)) {
+        echo "<script>alert('Excluído com sucesso!'); window.location.href = '" . HOME . "Usuarios';</script>";
         exit();
     } else {
         echo "<script>alert('Erro ao excluir!');</script>";
     }
 }
 
-if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_SESSION["USER_LOGIN"] == "admin")) {
+if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] == "admin")) {
 ?>
 
 <!DOCTYPE html>
@@ -48,15 +48,17 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
     <br><br>
 
     <?php
-        $lista = $ConAtas->selectAllAtas();
+        $lista = $ConUser->selectAllUser();
     ?>
 
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Dia</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Arquivo</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Senha</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Tipo</th>
                 <?php
                     if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
                         echo '<th scope="col">Excluir</th>';
@@ -66,24 +68,22 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
         </thead>
         <tbody>
         <?php
-        foreach ($lista as $atas) {
-            $atas = new Atas($atas);
+        foreach ($lista as $user) {
+            $user = new User($user);
             echo '
                 <tr>
-                    <td>' . $atas->getDia() . '</td>
-                    <td>' . $atas->getDescricao() . '</td>
-                    <td>
-                        <a href="' . $atas->getArquivo() . '" target="_blank">
-                            <button type="submit" class="btn">
-                                <img src="src/View/img/documento.png" width="28" height="28" alt="">
-                            </button>
-                        </a>
-                    </td>';
+                    <td>' . $user->getNome() . '</td>
+                    <td>' . $user->getEmail() . '</td>
+                    <td>' . $user->getSenha() . '</td>
+                    <td>' . $user->getTelefone() . '</td>
+                    <td>' . $user->getTipo() . '</td>
+                    
+                    ';
             if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
                 echo '<td>
-                        <form action="' . HOME . 'Atas' . '" method="POST" style="display:inline;">
-                            <input type="hidden" name="id_ata" value="' . $atas->getIdAtas() . '">
-                            <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta ata?\');">
+                        <form action="' . HOME . 'Usuarios' . '" method="POST" style="display:inline;">
+                            <input type="hidden" name="id_user" value="' . $user->getIdUser() . '">
+                            <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir este usuário?\');">
                                 <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
                             </button>
                     </td>';

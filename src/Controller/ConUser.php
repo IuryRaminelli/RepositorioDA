@@ -33,6 +33,33 @@
             }
             return false;
         }
+
+
+        public function deleteUser($id) {
+            try {
+                $stmt = $this->conexao->prepare("DELETE FROM user WHERE id = :id");
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    
+                $stmt->execute();
+    
+                if ($stmt->rowCount() > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo "Erro ao excluir a usuário: " . $e->getMessage();
+                return false;
+            }
+        }
+
+        public function selectAllUser(){
+            $pstmt = $this->conexao->prepare("SELECT * FROM user");
+            $pstmt->execute();
+            $lista = $pstmt->fetchAll(PDO::FETCH_CLASS, User::class);
+            return $lista;
+        }
+
     }
 
     

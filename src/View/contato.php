@@ -34,6 +34,7 @@
             background-color: #3b5998;
         }
         .social-links a:hover {
+            color: white;
             opacity: 0.8;
         }
     </style>
