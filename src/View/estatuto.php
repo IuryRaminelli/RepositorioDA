@@ -75,7 +75,6 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
         </thead>
         <tbody>
             <?php 
-                // Exibe a lista de transações
                 foreach ($lista as $estatuto){
                     $estatuto = new Estatuto($estatuto);
                     echo '<tr>

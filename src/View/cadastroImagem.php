@@ -28,7 +28,7 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
                     echo "<script>alert('Erro ao enviar uma das imagens.');</script>";
                 }
             }
-            echo "<script>alert('Imagens cadastradas com sucesso.'); window.location.href = '" . HOME . "CadastroImagem';</script>";
+            echo "<script>alert('Atividade cadastrada com sucesso.'); window.location.href = '" . HOME . "CadastroImagem';</script>";
             header("Location: " . HOME . "CadastroAtividade");
         } else {
             echo "<script>alert('Nome da atividade não encontrado.'); window.location.href = '" . HOME . "CadastroImagem';</script>";

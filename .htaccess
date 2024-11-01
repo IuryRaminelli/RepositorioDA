@@ -1,4 +1,4 @@
  	# Habilitando o modo Rewrite
  	RewriteEngine on
  	#Regras de redirecionamento.
- 	RewriteRule !\.(docx|pdf|js|ico|txt|gif|jpg|png|css)$ index.php
+ 	RewriteRule !\.(docx|pdf|js|ico|txt|gif|jpg|jpeg|png|css)$ index.php

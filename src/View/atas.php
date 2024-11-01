@@ -48,6 +48,10 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
     <br><br>
 
     <?php
+        include_once __DIR__ . '/../Controller/ConAtas.php';
+        include_once __DIR__ . '/../Model/Atas.php';
+
+        $ConAtas = new ConAtas();
         $lista = $ConAtas->selectAllAtas();
     ?>
 
