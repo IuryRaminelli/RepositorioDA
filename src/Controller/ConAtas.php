@@ -10,7 +10,7 @@
         public function insertAtas(Atas $Atas){
             $pstmt = $this->conexao->prepare("INSERT INTO atas 
             (dia, descricao, arquivo) VALUES (?,?,?)");
-            $pstmt->bindValue(1, value: $Atas->getDia());
+            $pstmt->bindValue(1, $Atas->getDia());
             $pstmt->bindValue(2, $Atas->getDescricao());
             $pstmt->bindValue(3, $Atas->getArquivo());
             $pstmt->execute();
@@ -27,22 +27,19 @@
         
         public function deleteAta($id) {
             try {
-                // Prepara a instrução SQL para excluir a ata
                 $stmt = $this->conexao->prepare("DELETE FROM atas WHERE id = :id");
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT); // Vincula o parâmetro
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     
-                // Executa a instrução
                 $stmt->execute();
     
-                // Verifica se a exclusão foi bem-sucedida
                 if ($stmt->rowCount() > 0) {
-                    return true; // Deletado com sucesso
+                    return true;
                 } else {
-                    return false; // Não foi encontrado nenhum registro com esse ID
+                    return false;
                 }
             } catch (PDOException $e) {
                 echo "Erro ao excluir a ata: " . $e->getMessage();
-                return false; // Em caso de erro
+                return false;
             }
         }
 

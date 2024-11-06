@@ -70,15 +70,15 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
       <?php
       echo '
         <input type="hidden" name="id_ativ">Alguma coisa<br>
-        <button type="submit" class="btn" name="acao" value="Excluir">
-          <a href="https://docs.google.com/document/d/14QzHX1SWVKHsl5BOb-QgkERbL9iRTDpeJMxkw__-yqg/edit?usp=sharing">
+        <button type="submit" class="btn" name="acao">
+          <a href="https://docs.google.com/document/d/1Cxpx5KA7gLrm9k_2mYWuoLpxOyuG3_zKUehP6ekNJWI/edit?usp=sharing">
             <img src="src/View/img/file-open.png" width="28" height="28" alt="">
           </a>
         </button>';
         echo '<br><br>';
         echo '
         <input type="hidden" name="id_ativ">Alguma coisa2<br>
-        <button type="submit" class="btn" name="acao" value="Excluir">
+        <button type="submit" class="btn" name="acao">
           <a href="https://docs.google.com/document/d/14QzHX1SWVKHsl5BOb-QgkERbL9iRTDpeJMxkw__-yqg/edit?usp=sharing">
             <img src="src/View/img/file-open.png" width="28" height="28" alt="">
           </a>

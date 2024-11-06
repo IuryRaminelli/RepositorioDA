@@ -11,7 +11,7 @@
             $pstmt = $this->conexao->prepare("INSERT INTO transacao 
             (quantidade, dia, descricao) VALUES (?,?,?)");
             $pstmt->bindValue(1, $Transacao->getQuantidade());
-            $pstmt->bindValue(2, value: $Transacao->getDia());
+            $pstmt->bindValue(2, $Transacao->getDia());
             $pstmt->bindValue(3, $Transacao->getDescricao());
             $pstmt->execute();
             return $pstmt;

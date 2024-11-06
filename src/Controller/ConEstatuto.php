@@ -10,7 +10,7 @@
         public function insertEstatuto(Estatuto $Estatuto){
             $pstmt = $this->conexao->prepare("INSERT INTO estatuto 
             (ano, descricao, arquivo) VALUES (?,?,?)");
-            $pstmt->bindValue(1, value: $Estatuto->getAno());
+            $pstmt->bindValue(1, $Estatuto->getAno());
             $pstmt->bindValue(2, $Estatuto->getDescricao());
             $pstmt->bindValue(3, $Estatuto->getArquivo());
             $pstmt->execute();
@@ -27,22 +27,19 @@
         
         public function deleteEstatuto($id) {
             try {
-                // Prepara a instrução SQL para excluir a ata
                 $stmt = $this->conexao->prepare("DELETE FROM estatuto WHERE id = :id");
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT); // Vincula o parâmetro
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     
-                // Executa a instrução
                 $stmt->execute();
     
-                // Verifica se a exclusão foi bem-sucedida
                 if ($stmt->rowCount() > 0) {
-                    return true; // Deletado com sucesso
+                    return true;
                 } else {
-                    return false; // Não foi encontrado nenhum registro com esse ID
+                    return false;
                 }
             } catch (PDOException $e) {
                 echo "Erro ao excluir a ata: " . $e->getMessage();
-                return false; // Em caso de erro
+                return false;
             }
         }
 

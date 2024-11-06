@@ -10,7 +10,7 @@
         public function insertImagem(Imagem $Imagem){
             $pstmt = $this->conexao->prepare("INSERT INTO imagem 
             (idativ, arquivo) VALUES (?,?)");
-            $pstmt->bindValue(1, value: $Imagem->getIdAtiv());
+            $pstmt->bindValue(1, $Imagem->getIdAtiv());
             $pstmt->bindValue(2, $Imagem->getArquivo());
             $pstmt->execute();
             return $pstmt;
