@@ -39,7 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     margin: auto; /* Centraliza a imagem verticalmente */
 }
 
+.carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #000; /* Ícones pretos */
+        border-radius: 50%; /* Botões arredondados */
+        width: 40px;
+        height: 40px;
+        border: 2px solid #fff; /* Borda branca */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra para os botões */
+    }
 
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+        background-color: #fff; /* Cor de fundo ao passar o mouse */
+        transform: scale(1.1); /* Aumenta o ícone ao passar o mouse */
+    }
 </style>
 
 </head>
@@ -96,11 +110,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
                 <?php endforeach; ?>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls<?= $atividade->getIdAtiv(); ?>" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="btn carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
               <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls<?= $atividade->getIdAtiv(); ?>" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="btn carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>

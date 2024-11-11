@@ -60,6 +60,7 @@
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroTransacao">Financeiro</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividade">Atividades</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
+                    <li><a class="dropdown-item" href="<?=HOME?>CadastroMembros">Membros</a></li>
                   </ul>
                 </li>
 
@@ -108,7 +109,14 @@
 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Membros' ? 'active' : '' ?>" href="<?=HOME?>Membros">Membros</a></li>
                 
-                <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['Estatuto', 'Atas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Documentos
+                </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="<?=HOME?>Estatuto">Estatuto</a></li>
+                  </ul>
+                </li>
 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Atividade' ? 'active' : '' ?>"  href="<?=HOME?>Atividade">Atividades</a></li>
                 

@@ -77,6 +77,29 @@ header{
   color: rgb(37, 41, 68);
 }
 
+/* Estilos para btn-success e btn-danger */
+.btn-success {
+  background-color: #28a745 !important; /* Verde */
+  color: #fff !important;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #dc3545 !important; /* Vermelho */
+  color: #fff !important;
+  border: none;
+}
+
+/* Hover para sucesso e perigo */
+.btn-success:hover {
+  background-color: #218838 !important; /* Verde escuro */
+}
+
+.btn-danger:hover {
+  background-color: #c82333 !important; /* Vermelho escuro */
+}
+
+
 .btn {
   background-color: rgb(37, 41, 68);
   color: #fff;

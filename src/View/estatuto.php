@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     }
 }
 
-if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_SESSION["USER_LOGIN"] == "admin")) {
 ?>
 
 <!DOCTYPE html>
@@ -286,8 +285,3 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
 </body>
 
 </html>
-<?php
-} else {
-    echo "<h1>404 Não possui acesso.</h1>";
-}
-?>

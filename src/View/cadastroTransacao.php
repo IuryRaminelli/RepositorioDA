@@ -7,21 +7,31 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
     include_once __DIR__ . '/../Rotas/Constantes.php';
 
     if (isset($_POST['cadastro'])) {
-        $arrayUser = array(
-            "quantidade" => $_POST['quantidade'],
-            "dia" => $_POST['dia'],
-            "descricao" => $_POST['descricao'],
-        );
-
-        $ConTransacao = new ConTransacao();
-        $Transacao = new Transacao($arrayUser);
-
-        if ($ConTransacao->insertTransacao($Transacao)) {
-            echo "<script>alert('Cadastrado com sucesso!'); window.location.href = '" . HOME . "CadastroTransacao';</script>";
-        } else {
-            echo "<script>alert('Erro ao cadastrar.'); window.location.href = '" . HOME . "CadastroTransacao';</script>";
-        }
-    }
+      $tipoTransacao = $_POST['tipoTransacao'];
+      $quantidade = $_POST['quantidade'];
+  
+      if ($tipoTransacao === 'saida') {
+          $quantidade = -abs($quantidade);
+      } else {
+          $quantidade = abs($quantidade);
+      }
+  
+      $arrayUser = array(
+          "quantidade" => $quantidade,
+          "dia" => $_POST['dia'],
+          "descricao" => $_POST['descricao'],
+      );
+  
+      $ConTransacao = new ConTransacao();
+      $Transacao = new Transacao($arrayUser);
+  
+      if ($ConTransacao->insertTransacao($Transacao)) {
+          echo "<script>alert('Cadastrado com sucesso!'); window.location.href = '" . HOME . "CadastroTransacao';</script>";
+      } else {
+          echo "<script>alert('Erro ao cadastrar.'); window.location.href = '" . HOME . "CadastroTransacao';</script>";
+      }
+  }
+  
 ?>
 
 <!DOCTYPE html>
@@ -55,17 +65,47 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
     <br><br>
     
     <h1 align="center">CADASTRAR TRANSAÇÃO</h1><br>
-    <div class="container" style="width: 40%;">
-    <form align="center" action="<?= HOME ?>CadastroTransacao" method="POST" enctype="multipart/form-data">
-                <label for="quantidade">Valor</label>
-                <input type="number" class="form-control" name="quantidade" placeholder="Digite um Valor"/><br>
-                <label for="dia">Data</label>
-                <input type="date" class="form-control" name="dia" autofocus="true"/><br>
-                <label for="descricao">Descrição</label>
-                <input type="text" class="form-control" name="descricao" placeholder="Digite uma Descrição"/><br>
-                <input type="submit" value="Cadastrar" class="btn" name="cadastro" />
-            </form>
-    </div>
+<div class="container" style="width: 40%;">
+  
+<div class="d-flex justify-content-center gap-3 mb-3">
+    <button type="button" id="btnEntrada" class="btn btn-success">Entrada</button>
+    <button type="button" id="btnSaida" class="btn btn-danger">Saída</button>
+</div>
+
+
+  <form align="center" action="<?= HOME ?>CadastroTransacao" method="POST" enctype="multipart/form-data">
+      <input type="hidden" id="tipoTransacao" name="tipoTransacao" value="entrada" />
+
+      <label for="quantidade">Valor</label>
+      <input type="number" id="quantidade" class="form-control" name="quantidade" placeholder="Digite um Valor" required/><br>
+
+      <label for="dia">Data</label>
+      <input type="date" class="form-control" name="dia" required autofocus="true"/><br>
+
+      <label for="descricao">Descrição</label>
+      <input type="text" class="form-control" name="descricao" placeholder="Digite uma Descrição" required/><br>
+
+      <input type="submit" value="Cadastrar" class="btn btn-primary" name="cadastro" />
+  </form>
+</div>
+
+<script>
+  const btnEntrada = document.getElementById('btnEntrada');
+  const btnSaida = document.getElementById('btnSaida');
+  const tipoTransacao = document.getElementById('tipoTransacao');
+  const quantidadeInput = document.getElementById('quantidade');
+
+  btnEntrada.addEventListener('click', () => {
+    tipoTransacao.value = 'entrada';
+    quantidadeInput.value = Math.abs(quantidadeInput.value);
+  });
+
+  btnSaida.addEventListener('click', () => {
+    tipoTransacao.value = 'saida';
+    quantidadeInput.value = -Math.abs(quantidadeInput.value);
+  });
+</script>
+
     <?php include_once 'footer.php'; ?>
 </div>
 </body>

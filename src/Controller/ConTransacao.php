@@ -17,11 +17,11 @@
             return $pstmt;
         }
         public function selectAllTransacao(){
-            $pstmt = $this->conexao->prepare("SELECT * FROM transacao");
+            $pstmt = $this->conexao->prepare("SELECT * FROM transacao ORDER BY dia DESC");
             $pstmt->execute();
             $lista = $pstmt->fetchAll(PDO::FETCH_CLASS, Transacao::class);
             return $lista;
-        }
+        }        
 
     }
 ?>

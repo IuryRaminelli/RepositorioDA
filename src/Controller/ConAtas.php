@@ -44,7 +44,7 @@
         }
 
         public function selectAllAtas(){
-            $pstmt = $this->conexao->prepare("SELECT * FROM atas");
+            $pstmt = $this->conexao->prepare("SELECT * FROM atas ORDER BY dia DESC");
             $pstmt->execute();
             $lista = $pstmt->fetchAll(PDO::FETCH_CLASS, Atas::class);
             return $lista;

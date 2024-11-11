@@ -43,9 +43,8 @@
             }
         }
 
-
         public function selectAllEstatuto(){
-            $pstmt = $this->conexao->prepare("SELECT * FROM estatuto");
+            $pstmt = $this->conexao->prepare("SELECT * FROM estatuto ORDER BY ano DESC");
             $pstmt->execute();
             $lista = $pstmt->fetchAll(PDO::FETCH_CLASS, Estatuto::class);
             return $lista;

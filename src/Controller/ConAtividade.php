@@ -46,7 +46,7 @@
         }
 
         public function selectAllAtividade(){
-            $pstmt = $this->conexao->prepare("SELECT * FROM atividade");
+            $pstmt = $this->conexao->prepare("SELECT * FROM atividade ORDER BY id DESC");
             $pstmt->execute();
             $lista = $pstmt->fetchAll(PDO::FETCH_CLASS, Atividade::class);
             return $lista;
