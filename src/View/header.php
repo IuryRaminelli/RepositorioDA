@@ -41,7 +41,7 @@
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Membros' ? 'active' : '' ?>" href="<?=HOME?>Membros">Membros</a></li>
 
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['Atividades', 'Atas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['Estatuto', 'Atas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Documentos
                 </a>
                   <ul class="dropdown-menu">

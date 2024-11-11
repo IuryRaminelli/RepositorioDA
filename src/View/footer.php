@@ -44,7 +44,7 @@
 <body>
     <footer class="pt-5 my-5 text-body-secondary border-top">
         <div class="row d-flex justify-content-between align-items-center">
-            <div class="col-md-3 text-right">
+            <div class="nav col-md-3 justify-content-start">
                 Todos os direitos reservados. &copy; 2024
             </div>
 
@@ -57,8 +57,8 @@
                 </a>
             </div>
 
-            <div class="col-md-3 text-left">
-                Desenvolvido por <a href="https://github.com/IuryRaminelli" class="developed-by">Iury Raminelli</a>
+            <div class="nav col-md-3 justify-content-end">
+                Desenvolvido por Iury Raminelli - ADS18
             </div>
         </div>
     </footer>
