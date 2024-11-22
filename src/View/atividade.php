@@ -25,35 +25,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Repositório Diretório ADS</title>
   <style>
-
 .carousel-inner {
-    height: 300px; /* Altura fixa para o contêiner do carrossel */
+    height: 300px;
 }
 
 .carousel-inner img {
-    width: 100%; /* Faz a imagem ocupar toda a largura do contêiner */
-    height: auto; /* Altura automática para manter a proporção */
-    max-height: 300px; /* Limita a altura máxima para que o layout não mude */
-    object-fit: scale-down; /* Ajusta a imagem sem cortá-la */
-    display: block; /* Remove espaços abaixo da imagem */
-    margin: auto; /* Centraliza a imagem verticalmente */
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: scale-down;
+    display: block;
+    margin: auto;
 }
 
 .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        background-color: #000; /* Ícones pretos */
-        border-radius: 50%; /* Botões arredondados */
-        width: 40px;
-        height: 40px;
-        border: 2px solid #fff; /* Borda branca */
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Sombra para os botões */
-    }
+.carousel-control-next-icon {
+    background-color: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
 
-    .carousel-control-prev-icon:hover,
-    .carousel-control-next-icon:hover {
-        background-color: #fff; /* Cor de fundo ao passar o mouse */
-        transform: scale(1.1); /* Aumenta o ícone ao passar o mouse */
-    }
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: #fff;
+    transform: scale(1.1);
+}
+
+.carousel-first .carousel-inner {
+    height: auto;
+}
+
+.carousel-first .carousel-inner img {
+    max-height: none;
+}
 </style>
 
 </head>
@@ -69,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     <br><br><br><br>
 
     <div class="container" style="width: 70%;">
-      <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
+      <div id="carouselExampleSlidesOnly" class="carousel carousel-first" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="src/View/img/logo-diretorio.png" class="d-block w-100" alt="Logo Diretório Acadêmico Turing">
@@ -80,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
 
     <br><br>
 
+    <h1>Atividades</h1><br>
     <?php
         include_once __DIR__ . '/../Controller/ConAtividade.php';
         include_once __DIR__ . '/../Model/Atividade.php';

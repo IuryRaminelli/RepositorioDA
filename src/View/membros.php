@@ -11,14 +11,35 @@
             align-items: center;
             flex-direction: column;
             
-            text-align: center; /* Centraliza o texto */
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <?php
+        session_start();
       include_once 'header.php';
       include_once 'vlibras.php';
+      include_once __DIR__ . '/../Controller/ConMembros.php';
+
+      $conMembros = new ConMembros();
+      $membros = $conMembros->selectAllMembros();
+      
+      $anos = [];
+      foreach ($membros as $membro) {
+          $anos[$membro['ano']][] = $membro;
+      }
+
+      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Excluir') {
+        $idMembros = $_POST["id_membro"];
+    
+        if ($conMembros->deleteMembros($idMembros)) {
+            echo "<script>alert('Excluído com sucesso!'); window.location.href = '" . HOME . "Membros';</script>";
+            exit();
+        } else {
+            echo "<script>alert('Erro ao excluir!');</script>";
+        }
+    }
     ?>
 
     <div class="container">
@@ -35,82 +56,70 @@
             </div>
         </div>
 
-        <br><br>
+        <br><br><h1>Membros</h1>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <?php foreach ($anos as $ano => $membrosDoAno): ?>
+        <li class="nav-item" role="presentation">
+            <button 
+                class="nav-link <?= $ano === array_key_first($anos) ? 'active' : '' ?>" 
+                id="tab-<?= $ano ?>" 
+                data-bs-toggle="tab" 
+                data-bs-target="#ano-<?= $ano ?>" 
+                type="button" 
+                role="tab" 
+                aria-controls="ano-<?= $ano ?>" 
+                aria-selected="<?= $ano === array_key_first($anos) ? 'true' : 'false' ?>">
+                <?= $ano ?>
+            </button>
+        </li>
+    <?php endforeach; ?>
+</ul>
 
-        <h1>Membros</h1>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">2024-2025</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">2023-2024</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">2022-2023</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">2021-2022</button>
-            </li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <?php
-                    /* FAZER COM O BANCO DE DADOS */
-                ?>
+<div class="tab-content">
+    <?php foreach ($anos as $ano => $membrosDoAno): ?>
+        <div 
+            class="tab-pane <?= $ano === array_key_first($anos) ? 'active' : '' ?>" 
+            id="ano-<?= $ano ?>" 
+            role="tabpanel" 
+            aria-labelledby="tab-<?= $ano ?>">
+            <?php foreach ($membrosDoAno as $membro): ?>
                 <h3>Presidente:</h3>
-                <b>Rafael Müller Tischler</b>
+                <b><?= htmlspecialchars($membro['presidente']) ?></b>
+                <br><br>
+                <h3>Vice-presidente:</h3>
+                <b><?= htmlspecialchars($membro['vicep']) ?></b>
                 <br><br>
 
-                <h3>Vice-presidente</h3>
-                <b>Murilo Brauner Ziani</b>
+                <h3>Secretário(a):</h3>
+                <b><?= htmlspecialchars($membro['secretario']) ?></b>
                 <br><br>
 
-                <h3>Tesoureiro(a)</h3>
-                <b>João Vitor Martins San Martin</b>
+                <h3>Vice-secretário(a):</h3>
+                <b><?= htmlspecialchars($membro['vices']) ?></b>
                 <br><br>
 
-                <h3>Vice-tesoureiro(a)</h3>
-                <b>João Miguel Zucuni Ugulini</b>
+                <h3>Tesoureiro(a):</h3>
+                <b><?= htmlspecialchars($membro['tesoureiro']) ?></b>
                 <br><br>
 
-                <h3>Secretário(a)</h3>
-                <b>Carolini Bassan Carlé</b>
-                <br><br>
+                <h3>Vice-tesoureiro(a):</h3>
+                <b><?= htmlspecialchars($membro['vicet']) ?></b>
 
-                <h3>Vice-secretário(a)</h3>
-                <b>Maurício Carvalho Cogo</b>
-            </div>
-            <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <?php
-                    /* FAZER COM O BANCO DE DADOS */
-                ?>
-                <h3>Presidente:</h3>
-                <b>João Manoel Carvalho Lopes</b>
-                <br><br>
-
-                <h3>Vice-presidente</h3>
-                <b>Arthur Guarizi De Godoy</b>
-                <br><br>
-
-                <h3>Secretário(a)</h3>
-                <b>Joseane Dias de Oliveira</b>
-                <br><br>
-
-                <h3>Vice-secretário(a)</h3>
-                <b>Bruna Flores Righes</b>
-                <br><br>
-
-                <h3>Tesoureiro(a)</h3>
-                <b>Samara Librelotto Winkelmann</b>
-            </div>
-            <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-                ...
-            </div>
-            <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-                ...
-            </div>
+                <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin"): ?>
+                    <br><br>
+                    <form action="<?= HOME ?>Membros" method="POST" style="display:inline;">
+                        <input type="hidden" name="id_membro" value="<?= $membro['id']; ?>">
+                        <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm('Tem certeza que deseja excluir esta gestão?');">
+                            <img src="src/View/img/deletar2.png" width="28" height="28" alt="Excluir">
+                        </button>
+                    </form>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            
         </div>
+    <?php endforeach; ?>
+    
+</div>
 
         <?php
             include_once 'footer.php';
