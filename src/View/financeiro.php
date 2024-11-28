@@ -1,5 +1,40 @@
 <?php
+
+session_start();
     include_once __DIR__ . '/../Rotas/Constantes.php';
+    include_once __DIR__ . '/../Controller/ConTransacao.php';
+    include_once __DIR__ . '/../Model/Transacao.php';
+
+    $ConTransacao = new ConTransacao();
+    $lista = $ConTransacao->selectAllTransacao();
+
+    $saldo = 0;
+
+    foreach ($lista as $transacao){
+        $transacao = new Transacao($transacao);
+        $saldo += $transacao->getQuantidade();
+    }
+
+    if ($saldo < 0) {
+        $cor = 'red';
+    } elseif ($saldo > 0) {
+        $cor = 'green';
+    } else {
+        $cor = 'black';
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Excluir') {
+      $idTrans = $_POST["teste"];
+      
+      if ($ConTransacao->deleteTransacao($idTrans)) {
+          echo "<script>alert('Excluído com sucesso!'); window.location.href = '" . HOME . "Financeiro';</script>";
+          exit();
+      } else {
+          echo "<script>alert('Erro ao excluir!');</script>";
+      }
+  }
+
+    if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_SESSION["USER_LOGIN"] == "admin")) {
 ?>
 
 <!DOCTYPE html>
@@ -35,31 +70,6 @@
 
     <h1>Saldo Atual</h1>
     <br>
-    <?php
-        include_once __DIR__ . '/../Controller/ConTransacao.php';
-        include_once __DIR__ . '/../Model/Transacao.php';
-
-        $ConTransacao = new ConTransacao();
-        $lista = $ConTransacao->selectAllTransacao();
-
-        // Inicializa o saldo como zero
-        $saldo = 0;
-
-        // Soma o valor de cada transação ao saldo
-        foreach ($lista as $transacao){
-            $transacao = new Transacao($transacao);
-            $saldo += $transacao->getQuantidade();
-        }
-
-        // Define a cor do saldo com base no valor
-        if ($saldo < 0) {
-            $cor = 'red';
-        } elseif ($saldo > 0) {
-            $cor = 'green';
-        } else {
-            $cor = 'black';
-        }
-    ?>
     <h1 align="center" style="color: <?= $cor; ?>">R$ <?= $saldo; ?></h1>
     
     <br>
@@ -72,20 +82,34 @@
                 <th scope="col">Valor</th>
                 <th scope="col">Dia</th>
                 <th scope="col">Descrição</th>
+                <?php
+                    if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
+                        echo '<th scope="col">Excluir</th>';
+                    }
+                ?>
             </tr>
         </thead>
         <tbody>
-            <?php 
-                // Exibe a lista de transações
+            <?php
                 foreach ($lista as $transacao){
                     $transacao = new Transacao($transacao);
                     echo '<tr>
                         <td> R$ ' . $transacao->getQuantidade() . '</td>
                         <td>' . $transacao->getDia() . '</td>
-                        <td>' . $transacao->getDescricao() . '</td>
-                    </tr>';
-                }
-            ?>
+                        <td>' . $transacao->getDescricao() . '</td>';
+                    if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
+                      echo '<td>
+                              <form action="' . HOME . 'Financeiro' . '" method="POST" style="display:inline;">
+                                  <input type="hidden" name="teste" value="' . $transacao->getIdTrans() . '">
+                                  <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta transação?\');">
+                                      <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
+                                  </button>
+                              </form>
+                          </td>';
+                  }
+                  echo '</tr>';
+              }
+              ?>
         </tbody>
     </table>
     <br><br>
@@ -97,3 +121,8 @@
 </body>
 
 </html>
+<?php
+} else {
+    echo "<h1>404 Não possui acesso.</h1>";
+}
+?>

@@ -1,6 +1,6 @@
 <?php
     class Transacao{
-        private $idTrans;
+        private $id;
         private $quantidade;
         private $dia;
         private $descricao;
@@ -15,10 +15,10 @@
             }
         }
         public function getIdTrans(){
-            return $this->idTrans;
+            return $this->id;
         } 
-        public function setIdTrans($idTrans){
-            return $this->idTrans = $idTrans;
+        public function setIdTrans($id){
+            return $this->id = $id;
         }
         public function getQuantidade(){
             return $this->quantidade;
@@ -39,7 +39,7 @@
             return $this->descricao = $descricao;
         }
         public function __toString(){
-            return "idTrans: " . $this->idTrans . " quantidade: " . $this->quantidade . " dia: " . $this->dia . " descricao: " . $this->descricao . "<br><br>";
+            return "idTrans: " . $this->id . " quantidade: " . $this->quantidade . " dia: " . $this->dia . " descricao: " . $this->descricao . "<br><br>";
         } 
     }
 ?>
