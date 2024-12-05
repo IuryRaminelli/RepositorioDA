@@ -93,9 +93,12 @@ session_start();
             <?php
                 foreach ($lista as $transacao){
                     $transacao = new Transacao($transacao);
+                    $dataOriginal = $transacao->getDia(); // Exemplo de data no formato 'YYYY-MM-DD'
+                    $data = DateTime::createFromFormat('Y-m-d', $dataOriginal); // Cria um objeto DateTime
+                    $dataFormatada = $data->format('d/m/Y'); // Formata a data para 'DD/MM/YYYY'
                     echo '<tr>
                         <td> R$ ' . $transacao->getQuantidade() . '</td>
-                        <td>' . $transacao->getDia() . '</td>
+                        <td>' . $dataFormatada . '</td>
                         <td>' . $transacao->getDescricao() . '</td>';
                     if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
                       echo '<td>

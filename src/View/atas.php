@@ -53,6 +53,7 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
 
         $ConAtas = new ConAtas();
         $lista = $ConAtas->selectAllAtas();
+        
     ?>
 
     <table class="table">
@@ -72,9 +73,12 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
         <?php
         foreach ($lista as $atas) {
             $atas = new Atas($atas);
+            $dataOriginal = $atas->getDia(); // Exemplo de data no formato 'YYYY-MM-DD'
+            $data = DateTime::createFromFormat('Y-m-d', $dataOriginal); // Cria um objeto DateTime
+            $dataFormatada = $data->format('d/m/Y'); // Formata a data para 'DD/MM/YYYY'
             echo '
                 <tr>
-                    <td>' . $atas->getDia() . '</td>
+                    <td>' . $dataFormatada . '</td>
                     <td>' . $atas->getDescricao() . '</td>
                     <td>
                         <a href="' . $atas->getArquivo() . '" target="_blank">

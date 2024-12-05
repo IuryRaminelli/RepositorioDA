@@ -67,7 +67,7 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
     <input type="text" class="form-control" name="nome" placeholder="Digite um Nome"/><br>
     
     <label for="descricao">Descrição</label>
-    <input type="text" class="form-control" name="descricao" placeholder="Digite uma Descrição"/><br>
+    <textarea name="descricao" class="form-control" placeholder="Digite uma Descrição" rows="5"></textarea><br>
     
     <label for="dia">Data</label>
     <input type="date" class="form-control" name="dia" autofocus="true"/><br>

@@ -9,6 +9,8 @@
     Rotas::add('/Membros', 'View/membros.php');
     Rotas::add('/Financeiro', 'View/financeiro.php');
     Rotas::add('/Contato', 'View/contato.php');
+    Rotas::addGetId('/AtividadeDetalhes', 'View/atividadeDetalhes.php');
+    Rotas::addGetPag('/Atividade', 'View/atividade.php');
 
     /* DOCUMENTOS */
     Rotas::add('/Atas', 'View/atas.php');
@@ -30,6 +32,7 @@
     Rotas::add('/CadastroTransacao', 'View/cadastroTransacao.php');
     Rotas::add('/CadastroEstatuto', 'View/cadastroEstatuto.php');
     Rotas::add('/CadastroAtividade', 'View/cadastroAtividade.php');
+
 
     /* PERFIL */
     Rotas::add('/Login', 'View/login.php');

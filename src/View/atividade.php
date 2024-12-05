@@ -3,6 +3,11 @@ session_start();
 include_once "src/Controller/ConAtividade.php";
 include_once "src/Model/Atividade.php";
 
+// Verifica se a constante HOME está definida, caso contrário define-a.
+if (!defined('HOME')) {
+    define('HOME', '/seu/caminho/home/');  // Ajuste conforme necessário
+}
+
 $ConAtividade = new ConAtividade();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Excluir') {
@@ -15,6 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
         echo "<script>alert('Erro ao excluir!');</script>";
     }
 }
+
+// Define o número de itens por página
+$limite = 6;
+$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+// Contar o número total de atividades
+$totalAtividades = $ConAtividade->contarAtividades();
+
+// Calcular o número total de páginas
+$totalPaginas = ceil($totalAtividades / $limite);
+
+// Obter as atividades para a página atual
+$atividades = $ConAtividade->selectAtividadesComPaginacao($pagina, $limite);
 ?>
 
 <!DOCTYPE html>
@@ -88,70 +106,102 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     <br><br>
 
     <h1>Atividades</h1><br>
-    <?php
-        include_once __DIR__ . '/../Controller/ConAtividade.php';
-        include_once __DIR__ . '/../Model/Atividade.php';
-
-        $ConAtividade = new ConAtividade();
-        $listaAtividades = $ConAtividade->selectAllAtividade();
-
+      <?php
         include_once __DIR__ . '/../Controller/ConImagem.php';
         include_once __DIR__ . '/../Model/Imagem.php';
 
         $ConImagem = new ConImagem();
-    ?>
- <div class="row">
-    <?php foreach ($listaAtividades as $atividade): ?>
-      <?php $atividade = new Atividade($atividade); ?>
-      <div class="col-md-6 mb-4">
-        <div class="card card-custom h-100">
-          <div class="carousel-container">
-            <div id="carouselExampleControls<?= $atividade->getIdAtiv(); ?>" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <?php 
-                $imagens = $ConImagem->selectAllImagem($atividade->getNome());
-                foreach ($imagens as $index => $imagem): 
-                  $imagem = new Imagem($imagem); ?>
-                  <div class="carousel-item <?= $index === 0 ? 'active' : ''; ?>">
-                    <img src="<?= $imagem->getArquivo(); ?>" class="d-block w-100" alt="<?= $atividade->getNome(); ?>">
-                  </div>
-                <?php endforeach; ?>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls<?= $atividade->getIdAtiv(); ?>" data-bs-slide="prev">
-                <span class="btn carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls<?= $atividade->getIdAtiv(); ?>" data-bs-slide="next">
-                <span class="btn carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
-          <div class="card-body card-body-custom">
-            <h3 class="card-title card-title-custom"><?= $atividade->getNome(); ?></h3>
-            <h5 class="card-text"><?= $atividade->getDescricao(); ?></h5>
-            <p class="card-text"><?= $atividade->getLocal(); ?></small></p>
-            <p class="card-text"><small class="text-muted text-muted-custom"><?= $atividade->getDia(); ?></small></p>
-            <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin"): ?>
-                <p class="card-text">
-                    <small class="text-muted text-muted-custom">
-                        <form action="<?= HOME ?>Atividade" method="POST" style="display:inline;">
-                            <input type="hidden" name="id_ativ" value="<?= $atividade->getIdAtiv(); ?>">
-                            <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm('Tem certeza que deseja excluir esta atividade?');">
-                                <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
+      ?>
+<div class="row">
+    <?php foreach ($atividades as $atividade): ?>
+        <?php $atividade = new Atividade($atividade); ?>
+        <div class="col-md-4 mb-4">
+            <div class="card card-custom h-100">
+                <a href="<?= HOME ?>AtividadeDetalhes?id=<?= $atividade->getIdAtiv(); ?>" style="text-decoration: none;">
+                    <div class="carousel-container">
+                        <div id="carouselExampleControls<?= $atividade->getIdAtiv(); ?>" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <?php 
+                                $imagens = $ConImagem->selectAllImagem($atividade->getNome());
+                                foreach ($imagens as $index => $imagem): 
+                                    $imagem = new Imagem($imagem); 
+                                    $dataOriginal = $atividade->getDia(); // Exemplo de data no formato 'YYYY-MM-DD'
+                                    $data = DateTime::createFromFormat('Y-m-d', $dataOriginal); // Cria um objeto DateTime
+                                    $dataFormatada = $data->format('d/m/Y'); // Formata a data para 'DD/MM/YYYY'?>
+                                    <div class="carousel-item <?= $index === 0 ? 'active' : ''; ?>">
+                                        <img src="<?= $imagem->getArquivo(); ?>" class="d-block w-100" alt="<?= $atividade->getNome(); ?>">
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls<?= $atividade->getIdAtiv(); ?>" data-bs-slide="prev">
+                                <span class="btn carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
                             </button>
-                        </form>
-                    </small>
-                </p>
-            <?php endif; ?>
-          </div>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls<?= $atividade->getIdAtiv(); ?>" data-bs-slide="next">
+                                <span class="btn carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </a>
+                <div class="card-body card-body-custom">
+                    <a href="<?= HOME ?>AtividadeDetalhes?id=<?= $atividade->getIdAtiv(); ?>" style="text-decoration: none;">
+                        <h3 class="card-title card-title-custom"><?= $atividade->getNome(); ?></h3>
+                    </a>
+                    <h5 class="card-text">
+                        <?php
+                        $descricao = $atividade->getDescricao();
+                        if (strlen($descricao) > 40) {
+                            $descricao = substr($descricao, 0, 50) . '...';
+                        }
+                        echo htmlspecialchars($descricao);
+                        ?>
+                    </h5>
+                    <p class="card-text">em <?= htmlspecialchars($atividade->getLocal()); ?></p>
+                    <p class="card-text"><small class="text-muted text-muted-custom"><?= $dataFormatada;?></small></p>
+                </div>
+            </div>
         </div>
-      </div>
     <?php endforeach; ?>
 </div>
 
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <?php if ($pagina > 1): ?>
+            <li class="page-item">
+                <a class="page-link" href="?pagina=<?= $pagina - 1; ?>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        <?php else: ?>
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        <?php endif; ?>
 
+        <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+            <li class="page-item <?= ($i == $pagina) ? 'active' : ''; ?>">
+                <a class="page-link" href="?pagina=<?= $i; ?>"><?= $i; ?></a>
+            </li>
+        <?php endfor; ?>
 
+        <?php if ($pagina < $totalPaginas): ?>
+            <li class="page-item">
+                <a class="page-link" href="?pagina=<?= $pagina + 1; ?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        <?php else: ?>
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        <?php endif; ?>
+    </ul>
+</nav>
 
     <br><br>
     <?php

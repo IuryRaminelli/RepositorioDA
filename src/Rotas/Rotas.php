@@ -18,6 +18,16 @@ class Rotas{
 		self::$rotas[''.$rota.'/(?P<'.$variavel.'>\d+)'] = $destino;
 	}
 	
+	public static function addGetId($rota, $destino){
+		// Este método captura o parâmetro 'id' diretamente da URL
+		self::$rotas['^'.$rota.'\?id=(?P<id>\d+)$'] = $destino;
+	}
+
+	public static function addGetPag($rota, $destino){
+		// Este método captura o parâmetro 'pagina' diretamente da URL
+		self::$rotas['^'.$rota.'\?pagina=(?P<pagina>\d+)$'] = $destino;
+	}
+	
 	public static function addGet($rota, $destino, $variaveis){
 		$parametros = '';
 		if(is_array($variaveis)){			
