@@ -50,10 +50,20 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
       include_once 'header.php';
       include_once 'vlibras.php';
       ?>
-
   <div class="container">
+
+<br><br><br><br>
+
+<div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="src/View/img/headernovo.png" class="d-block w-100" alt="Logo Diretório Acadêmico Turing">
+                </div>
+            </div>
+        </div>
+
     <div class="container" style="width: 45%;">
-      <br><br><br><br>
+      <br><br>
       <div class="row mt-4">
         <form action="<?=HOME?>Login" method="POST" class="formLogin">
           <h1>LOGIN</h1>

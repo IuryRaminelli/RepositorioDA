@@ -35,15 +35,13 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
 
 <div class="container">
     <br><br><br><br>
-    <div class="container" style="width: 70%;">
-        <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="src/View/img/logo-diretorio.png" class="d-block w-100" alt="Logo Diretório Acadêmico Turing">
+                    <img src="src/View/img/headernovo.png" class="d-block w-100" alt="Logo Diretório Acadêmico Turing">
                 </div>
             </div>
         </div>
-    </div>
 
     <br><br>
 
@@ -73,9 +71,9 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
         <?php
         foreach ($lista as $atas) {
             $atas = new Atas($atas);
-            $dataOriginal = $atas->getDia(); // Exemplo de data no formato 'YYYY-MM-DD'
-            $data = DateTime::createFromFormat('Y-m-d', $dataOriginal); // Cria um objeto DateTime
-            $dataFormatada = $data->format('d/m/Y'); // Formata a data para 'DD/MM/YYYY'
+            $dataOriginal = $atas->getDia();
+            $data = DateTime::createFromFormat('Y-m-d', $dataOriginal);
+            $dataFormatada = $data->format('d/m/Y');
             echo '
                 <tr>
                     <td>' . $dataFormatada . '</td>

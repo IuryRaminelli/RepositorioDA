@@ -87,15 +87,13 @@
   <div class="container">
     <br><br><br><br>
 
-    <div class="container" style="width: 70%;">
-      <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="src/View/img/logo-diretorio.png" class="d-block w-100" alt="Logo Diretório Acadêmico Turing">
-          </div>
+    <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="src/View/img/headernovo.png" class="d-block w-100" alt="Logo Diretório Acadêmico Turing">
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
     <br><br>
     <div class="row mb-4">
