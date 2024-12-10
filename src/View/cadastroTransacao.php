@@ -42,7 +42,6 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
     <title>Document</title>
 </head>
 <body>
-<body>      
   <?php
       include_once 'header.php';
       include_once 'vlibras.php';
@@ -75,7 +74,7 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
       <input type="hidden" id="tipoTransacao" name="tipoTransacao" value="entrada" />
 
       <label for="quantidade">Valor</label>
-      <input type="number" id="quantidade" class="form-control" name="quantidade" placeholder="Digite um Valor" required/><br>
+      <input type="number" id="quantidade" class="form-control" name="quantidade" placeholder="Digite um Valor"/><br>
 
       <label for="dia">Data</label>
       <input type="date" class="form-control" name="dia" required autofocus="true"/><br>
@@ -95,14 +94,19 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
 
   btnEntrada.addEventListener('click', () => {
     tipoTransacao.value = 'entrada';
-    quantidadeInput.value = Math.abs(quantidadeInput.value);
+    if (quantidadeInput.value < 0) {
+      quantidadeInput.value = Math.abs(quantidadeInput.value);
+    }
   });
 
   btnSaida.addEventListener('click', () => {
     tipoTransacao.value = 'saida';
-    quantidadeInput.value = -Math.abs(quantidadeInput.value);
+    if (quantidadeInput.value > 0) {
+      quantidadeInput.value = -Math.abs(quantidadeInput.value);
+    }
   });
 </script>
+
 
     <?php include_once 'footer.php'; ?>
 </div>

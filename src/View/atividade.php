@@ -168,6 +168,18 @@ $atividades = $ConAtividade->selectAtividadesComPaginacao($pagina, $limite);
                             </h5>
                             <p class="card-text">em <?= htmlspecialchars($atividade->getLocal()); ?></p>
                             <p class="card-text"><small class="text-muted text-muted-custom"><?= $dataFormatada;?></small></p>
+                            <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin"): ?>
+                                <p class="card-text">
+                                    <small class="text-muted text-muted-custom">
+                                        <form action="<?= HOME ?>Atividade" method="POST" style="display:inline;">
+                                            <input type="hidden" name="id_ativ" value="<?= $atividade->getIdAtiv(); ?>">
+                                            <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm('Tem certeza que deseja excluir esta atividade?');">
+                                                <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
+                                            </button>
+                                        </form>
+                                    </small>
+                                </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
