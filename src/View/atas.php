@@ -32,7 +32,6 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
     include_once 'header.php';
     include_once 'vlibras.php';
 ?>
-
 <div class="container">
     <br><br><br><br>
     <div id="carouselExampleSlidesOnly" class="carousel" data-bs-ride="carousel">
@@ -44,7 +43,8 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
         </div>
 
     <br><br>
-
+    <h1>Atas do Diretório Academico</h1>
+    <br>
     <?php
         include_once __DIR__ . '/../Controller/ConAtas.php';
         include_once __DIR__ . '/../Model/Atas.php';
@@ -61,7 +61,7 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
                 <th scope="col">Descrição</th>
                 <th scope="col">Arquivo</th>
                 <?php
-                    if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
+                    if (isset($_SESSION["USER_LOGIN"])) {
                         echo '<th scope="col">Excluir</th>';
                     }
                 ?>
@@ -85,7 +85,7 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
                             </button>
                         </a>
                     </td>';
-            if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
+            if (isset($_SESSION["USER_LOGIN"])) {
                 echo '<td>
                         <form action="' . HOME . 'Atas' . '" method="POST" style="display:inline;">
                             <input type="hidden" name="id_ata" value="' . $atas->getIdAtas() . '">

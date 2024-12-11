@@ -1,5 +1,7 @@
 <?php
-  $current_page = basename($_SERVER['REQUEST_URI'], ".php");
+$current_page = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+
+$is_active = in_array($current_page, ['Atividade', 'AtividadeDetalhes']);
 ?>
 
 <!DOCTYPE html>
@@ -66,8 +68,8 @@
 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
 
-                <li class="nav-item"><a class="nav-link <?= $current_page == 'Atividade' ? 'active' : '' ?>"  href="<?=HOME?>Atividade">Atividades</a></li>
-                
+                <a class="nav-link <?= $is_active ? 'active' : '' ?>" href="<?= rtrim(HOME, '/') ?>/Atividade">Atividades</a>
+
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
 
@@ -99,7 +101,7 @@
                 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Financeiro' ? 'active' : '' ?>"  href="<?=HOME?>Financeiro">Financeiro</a></li>
 
-                <li class="nav-item"><a class="nav-link <?= $current_page == 'Atividade' ? 'active' : '' ?>"  href="<?=HOME?>Atividade">Atividades</a></li>
+                <a class="nav-link <?= $is_active ? 'active' : '' ?>" href="<?= rtrim(HOME, '/') ?>/Atividade">Atividades</a>
 
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
@@ -118,34 +120,38 @@
                   </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link <?= $current_page == 'Atividade' ? 'active' : '' ?>"  href="<?=HOME?>Atividade">Atividades</a></li>
-                
+                <a class="nav-link <?= $is_active ? 'active' : '' ?>" href="<?= rtrim(HOME, '/') ?>/Atividade">Atividades</a>
+
                 <li class="nav-item"><a class="nav-link <?= $current_page == 'Contato' ? 'active' : '' ?>"  href="<?=HOME?>Contato">Contato</a></li>
               <?php endif; ?>
             </ul>
             <ul class="navbar-nav">
               <?php if (!isset($_SESSION["USER_LOGIN"])) : ?>
-                <div class="dropdown text">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="src/View/img/perfil2.png" alt="Foto" width="32" height="32" class="rounded-circle">
-                  </a>
-                  <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="<?=HOME?>Login">Entrar</a></li>
-                  </ul>
-                </div>
+                  <div class="dropdown text">
+                      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="src/View/img/perfil2.png" alt="Foto" width="32" height="32" class="rounded-circle">
+                      </a>
+                      <ul class="dropdown-menu text-small">
+                          <li><a class="dropdown-item" href="<?=HOME?>Login">Entrar</a></li>
+                      </ul>
+                  </div>
               <?php else : ?>
-                <div class="dropdown text">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="src/View/img/perfil2.png" alt="Foto" width="32" height="32" class="rounded-circle">
-                  </a>
-                  <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="<?=HOME?>Perfil">Perfil</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="<?=HOME?>Sair">Sair</a></li>
-                  </ul>
-                </div>
+                  <div class="dropdown text">
+                      <?php if ($_SESSION["USER_LOGIN"] === "admin") : ?>
+                          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              <img src="src/View/img/perfiladm.png" alt="Foto" width="32" height="32" class="rounded-circle">
+                          </a>
+                      <?php else : ?>
+                          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              <img src="src/View/img/perfilmembro.png" alt="Foto" width="32" height="32" class="rounded-circle">
+                          </a>
+                      <?php endif; ?>
+                      <ul class="dropdown-menu text-small">
+                          <li><a class="dropdown-item" href="<?=HOME?>Perfil">Perfil</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="<?=HOME?>Sair">Sair</a></li>
+                      </ul>
+                  </div>
               <?php endif; ?>
             </ul>
           </div>

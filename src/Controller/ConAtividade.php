@@ -23,7 +23,7 @@
             $pstmt = $this->conexao->prepare("SELECT * FROM atividade WHERE id = :id");
             $pstmt->bindValue(":id", $id);
             $pstmt->execute();
-            $atividade = $pstmt->fetchObject(Atividade::class); // Retorna um único objeto
+            $atividade = $pstmt->fetchObject(Atividade::class);
             return $atividade;
         }
 
@@ -51,17 +51,15 @@
             return $lista;
         }
 
-        // Função para contar o total de atividades
         public function contarAtividades() {
             $pstmt = $this->conexao->prepare("SELECT COUNT(*) FROM atividade");
             $pstmt->execute();
-            $totalAtividades = $pstmt->fetchColumn();  // Retorna o número total de atividades
+            $totalAtividades = $pstmt->fetchColumn();
             return $totalAtividades;
         }
 
-        // Função para selecionar atividades com paginação
         public function selectAtividadesComPaginacao($pagina, $limite) {
-            $offset = ($pagina - 1) * $limite;  // Calculando o valor de offset baseado na página
+            $offset = ($pagina - 1) * $limite;
             $pstmt = $this->conexao->prepare("SELECT * FROM atividade ORDER BY id DESC LIMIT :limite OFFSET :offset");
             $pstmt->bindValue(":limite", $limite, PDO::PARAM_INT);
             $pstmt->bindValue(":offset", $offset, PDO::PARAM_INT);

@@ -12,7 +12,6 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] == "admin" || iss
             $target_dir = "src/View/img/";
             $ConImagem = new ConImagem();
 
-            // Processando múltiplos arquivos de uma vez
             $arquivos = $_FILES['arquivo'];
 
             foreach ($arquivos['name'] as $key => $name) {
@@ -79,7 +78,6 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] == "admin" || iss
             <label for="arquivo">Imagens</label>
             <div id="file-container">
                 <div class="d-flex align-items-center mb-2">
-                    <!-- O campo 'multiple' permite selecionar várias imagens ao mesmo tempo -->
                     <input type="file" class="form-control me-2" name="arquivo[]" multiple />
                 </div>
             </div>

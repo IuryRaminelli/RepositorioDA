@@ -3,9 +3,8 @@ session_start();
 include_once "src/Controller/ConAtividade.php";
 include_once "src/Model/Atividade.php";
 
-// Verifica se a constante HOME está definida, caso contrário define-a.
 if (!defined('HOME')) {
-    define('HOME', '/seu/caminho/home/');  // Ajuste conforme necessário
+    define('HOME', '/seu/caminho/home/');
 }
 
 $ConAtividade = new ConAtividade();
@@ -21,17 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     }
 }
 
-// Define o número de itens por página
 $limite = 6;
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
-// Contar o número total de atividades
 $totalAtividades = $ConAtividade->contarAtividades();
 
-// Calcular o número total de páginas
 $totalPaginas = ceil($totalAtividades / $limite);
 
-// Obter as atividades para a página atual
 $atividades = $ConAtividade->selectAtividadesComPaginacao($pagina, $limite);
 ?>
 

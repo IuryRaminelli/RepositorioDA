@@ -22,9 +22,9 @@ if (isset($_GET['id'])) {
     exit;
 }
 
-$dataOriginal = $atividade->getDia(); // Exemplo de data no formato 'YYYY-MM-DD'
-$data = DateTime::createFromFormat('Y-m-d', $dataOriginal); // Cria um objeto DateTime
-$dataFormatada = $data->format('d/m/Y'); // Formata a data para 'DD/MM/YYYY'
+$dataOriginal = $atividade->getDia();
+$data = DateTime::createFromFormat('Y-m-d', $dataOriginal);
+$dataFormatada = $data->format('d/m/Y');
 ?>
 
 <!DOCTYPE html>
