@@ -163,7 +163,7 @@ $atividades = $ConAtividade->selectAtividadesComPaginacao($pagina, $limite);
                             </h5>
                             <p class="card-text">em <?= htmlspecialchars($atividade->getLocal()); ?></p>
                             <p class="card-text"><small class="text-muted text-muted-custom"><?= $dataFormatada;?></small></p>
-                            <?php if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin"): ?>
+                            <?php if (isset($_SESSION["USER_LOGIN"])): ?>
                                 <p class="card-text">
                                     <small class="text-muted text-muted-custom">
                                         <form action="<?= HOME ?>Atividade" method="POST" style="display:inline;">

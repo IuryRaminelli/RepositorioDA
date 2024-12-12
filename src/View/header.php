@@ -53,7 +53,7 @@ $is_active = in_array($current_page, ['Atividade', 'AtividadeDetalhes']);
                 </li>
 
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroEstatuto', 'CadastroUser', 'CadastroTransacao', 'CadastroAtividade', 'CadastroAtas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroEstatuto', 'CadastroUser', 'CadastroTransacao', 'CadastroAtividade', 'CadastroImagem', 'CadastroAtas']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Controle
                 </a>
                   <ul class="dropdown-menu">
@@ -89,7 +89,7 @@ $is_active = in_array($current_page, ['Atividade', 'AtividadeDetalhes']);
                 </li>
 
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroAtividade', 'CadastroAtas', 'CadastroTransacao']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle <?= in_array($current_page, ['CadastroAtividade', 'CadastroAtas', 'CadastroTransacao', 'CadastroImagem']) ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Controle
                 </a>
                   <ul class="dropdown-menu">

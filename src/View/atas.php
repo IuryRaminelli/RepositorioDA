@@ -5,8 +5,8 @@ include_once "src/Model/Atas.php";
 
 $ConAtas = new ConAtas();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Excluir') {
-    $idAta = $_POST["id_ata"];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
+    $idAta = $_POST['id_ata'];
 
     if ($ConAtas->deleteAta($idAta)) {
         echo "<script>alert('Excluído com sucesso!'); window.location.href = '" . HOME . "Atas';</script>";
@@ -80,19 +80,21 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
                     <td>' . $atas->getDescricao() . '</td>
                     <td>
                         <a href="' . $atas->getArquivo() . '" target="_blank">
-                            <button type="submit" class="btn">
+                            <button type="button" class="btn">
                                 <img src="src/View/img/documento.png" width="28" height="28" alt="">
                             </button>
                         </a>
                     </td>';
             if (isset($_SESSION["USER_LOGIN"])) {
-                echo '<td>
-                        <form action="' . HOME . 'Atas' . '" method="POST" style="display:inline;">
-                            <input type="hidden" name="id_ata" value="' . $atas->getIdAtas() . '">
-                            <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta ata?\');">
-                                <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
-                            </button>
-                    </td>';
+                echo '
+                <td>
+                    <form action="' . HOME . 'Atas' . '" method="POST" style="display:inline;">
+                        <input type="hidden" name="id_ata" value="' . $atas->getIdAtas() . '">
+                        <button type="submit" class="btn" name="acao" value="Excluir" onclick="return confirm(\'Tem certeza que deseja excluir esta ata?\');">
+                            <img src="src/View/img/deletar2.png" width="28" height="28" alt="">
+                        </button>
+                    </form>
+                </td>';
             }
             echo '</tr>';
         }

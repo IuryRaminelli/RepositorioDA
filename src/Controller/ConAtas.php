@@ -26,21 +26,10 @@
         }
         
         public function deleteAta($id) {
-            try {
-                $stmt = $this->conexao->prepare("DELETE FROM atas WHERE id = :id");
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    
-                $stmt->execute();
-    
-                if ($stmt->rowCount() > 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } catch (PDOException $e) {
-                echo "Erro ao excluir a ata: " . $e->getMessage();
-                return false;
-            }
+            $pstmt = $this->conexao->prepare("DELETE FROM atas WHERE id = :id");
+            $pstmt->bindValue(":id", $id);
+            $pstmt->execute();
+            return $pstmt;
         }
 
         public function selectAllAtas(){

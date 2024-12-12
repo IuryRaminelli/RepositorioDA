@@ -1,40 +1,54 @@
 <?php
 session_start();
-if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SESSION["USER_LOGIN"] == "admin") {
+if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_SESSION["USER_LOGIN"] == "admin")) {
 
-    include_once __DIR__ . "/../Controller/ConAtas.php";
-    include_once __DIR__ . "/../Model/Atas.php";
-    include_once __DIR__ . '/../Rotas/Constantes.php';
-
-
-    if(isset($_POST['cadastro'])){
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["arquivo"])){
-            $target_dir = "src/View/img/";
-            $target_file = $target_dir . basename($_FILES["arquivo"]["name"]);
-            $uploadOk = 1;
-            $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+  include_once __DIR__ . "/../Controller/ConAtas.php";
+  include_once __DIR__ . "/../Model/Atas.php";
+  include_once __DIR__ . '/../Rotas/Constantes.php';
 
 
-        
-            if (move_uploaded_file($_FILES["arquivo"]["tmp_name"], $target_file)){
-                
-                $arrrayCIA = array("dia" => $_POST['dia'],
-                                "descricao" => $_POST['descricao'],
-                                "arquivo" => $target_file
-                );
+  if (isset($_POST['cadastro'])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["arquivo"])) {
+      $target_dir = "src/View/img/";
+      $target_file = $target_dir . basename($_FILES["arquivo"]["name"]);
+      $uploadOk = 1;
+      $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
+      if ($fileType != "pdf") {
+        $uploadOk = 0;
+        echo "<script>alert('Apenas arquivos PDF são permitidos.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
+      }
 
-                $ConAtas = new ConAtas();
-                $Atas = new Atas($arrrayCIA);
+      if (file_exists($target_file)) {
+        $uploadOk = 0;
+        echo "<script>alert('O arquivo já existe.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
+      }
 
+      if ($_FILES["arquivo"]["size"] > 5000000) { 
+        $uploadOk = 0;
+        echo "<script>alert('O arquivo excede o tamanho máximo permitido.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
+      }
 
-                $ConAtas->insertAtas($Atas);
-                echo "<script>alert('Ata cadastrada com sucesso.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
-            }else {
-                echo "<script>alert('Desculpe, houve um erro ao enviar seu arquivo.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
-            }
+      if ($uploadOk == 0) {
+        echo "<script>alert('Desculpe, houve um erro ao enviar seu arquivo.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
+      } else {
+        if (move_uploaded_file($_FILES["arquivo"]["tmp_name"], $target_file)) {
+
+          $arrrayCIA = array("dia" => $_POST['dia'],
+                             "descricao" => $_POST['descricao'],
+                             "arquivo" => $target_file);
+
+          $ConAtas = new ConAtas();
+          $Atas = new Atas($arrrayCIA);
+
+          $ConAtas->insertAtas($Atas);
+          echo "<script>alert('Ata cadastrada com sucesso.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
+        } else {
+          echo "<script>alert('Desculpe, houve um erro ao enviar seu arquivo.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
         }
+      }
     }
+  }
 ?>
 
 <!DOCTYPE html>
