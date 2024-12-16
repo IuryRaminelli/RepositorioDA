@@ -3,10 +3,6 @@ session_start();
 include_once "src/Controller/ConAtividade.php";
 include_once "src/Model/Atividade.php";
 
-if (!defined('HOME')) {
-    define('HOME', '/seu/caminho/home/');
-}
-
 $ConAtividade = new ConAtividade();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Excluir') {

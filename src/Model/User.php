@@ -1,6 +1,6 @@
 <?php
     class User{
-        private $idUser;
+        private $id;
         private $nome;
         private $email;
         private $telefone;
@@ -17,10 +17,10 @@
             }
         }
         public function getIdUser(){
-            return $this->idUser;
+            return $this->id;
         } 
-        public function setIdUser($idUser){
-            return $this->idUser = $idUser;
+        public function setIdUser($id){
+            return $this->id = $id;
         }
         public function getNome(){
             return $this->nome;
@@ -55,7 +55,7 @@
         }
         
         public function __toString(){
-            return "idUser: " . $this->idUser . " nome: " . $this->nome . " Email: " . $this->email . " Telefone: " . $this->telefone . " Tipo: " . $this->tipo . " senha: " . $this->senha . "<br><br>";
+            return "idUser: " . $this->id . " nome: " . $this->nome . " Email: " . $this->email . " Telefone: " . $this->telefone . " Tipo: " . $this->tipo . " senha: " . $this->senha . "<br><br>";
         } 
     }
 ?>

@@ -7,10 +7,29 @@ $ConUser = new ConUser();
 $linha = $ConUser->selectLoginUser1($_SESSION["USER_LOGIN2"]);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['acao'] === 'Alterar') {
+    
+    $User = new User();
+    
     $idUser = $_POST['id_user'];
-    $_SESSION['id_user'] = $idUser;
-    header("Location: " . HOME . "AlterarUser");
-    exit();
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $tipo = $_POST['tipo'];
+    $telefone = $_POST['telefone'];
+    
+    $User->setIdUser($idUser);
+    $User->setNome($nome);
+    $User->setEmail($email);
+    $User->setSenha($senha);
+    $User->setTipo($tipo);
+    $User->setTelefone($telefone);
+    
+    if ($ConUser->alterarUser($User)) {
+        echo "<script>alert('Alterado com sucesso!'); window.location.href = '" . HOME . "Perfil';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Erro ao alterar!');</script>";
+    }
 }
 
 
@@ -47,22 +66,20 @@ if($linha != null){
 
     <div class="container" style="width: 40%;">
         <form align="center" method="POST">
-                <h1>PERFIL</h1>
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" name="nome" value="<?php echo $user->getNome(); ?>" autofocus="true" disabled=""/><br>
-                <label for="email">E-mail</label>
-                <input type="email" class="form-control" name="email" value="<?php echo $user->getEmail(); ?>" disabled=""/><br>
-                <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" name="telefone" value="<?php echo $user->getTelefone(); ?>" disabled=""/><br>
-                <label for="tipo">Tipo</label>
-                <input type="text" class="form-control" name="tipo" value="<?php echo $user->getTipo(); ?>" disabled=""/><br>
-                <label for="senha">Senha</label>
-                <input type="password" class="form-control" name="senha" value="********" disabled=""/>
-                <br>
+                <h1>ALTERAR PERFIL</h1>
                 <input type="hidden" name="id_user" value="<?= $user->getIdUser(); ?>">
-                <button type="submit" class="btn" name="acao" value="Alterar">
-                    <img src="src/View/img/editar2.png" width="28" height="28" alt="">
-                </button>
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" value="<?php echo $user->getNome(); ?>" autofocus="true"/><br>
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" name="email" value="<?php echo $user->getEmail(); ?>"/><br>
+                <label for="telefone">Telefone</label>
+                <input type="tel" class="form-control" name="telefone" value="<?php echo $user->getTelefone(); ?>"/><br>
+                <label for="tipo">Tipo</label>
+                <input type="text" class="form-control" name="tipo" value="<?php echo $user->getTipo(); ?>" readonly=""/><br>
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" name="senha" /><br>
+                <input type="submit" value="Alterar" class="btn" name="acao" />
+                <br>
             </form>
     </div>
     <?php include_once 'footer.php'; ?>

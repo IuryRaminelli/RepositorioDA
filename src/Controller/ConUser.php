@@ -13,7 +13,7 @@
             (?,?,?,?,?)");
             $pstmt->bindValue(1, $User->getNome());
             $pstmt->bindValue(2, $User->getEmail());
-            $pstmt->bindValue(3, $User->getSenha());
+            $pstmt->bindValue(3, password_hash($User->getSenha(), PASSWORD_DEFAULT));
             $pstmt->bindValue(4, $User->getTelefone());
             $pstmt->bindValue(5, $User->getTipo());
             $pstmt->execute();
@@ -34,7 +34,32 @@
             return false;
         }
 
-
+        public function alterarUser(User $User) {
+            try {
+                $query = "UPDATE user SET nome = :nome, email = :email, telefone = :telefone, tipo = :tipo";
+                if (!empty($User->getSenha())) {
+                    $query .= ", senha = :senha";
+                }
+                $query .= " WHERE id = :id";
+        
+                $pstmt = $this->conexao->prepare($query);
+                $pstmt->bindValue(':nome', $User->getNome());
+                $pstmt->bindValue(':email', $User->getEmail());
+                $pstmt->bindValue(':telefone', $User->getTelefone());
+                $pstmt->bindValue(':tipo', $User->getTipo());
+                if (!empty($User->getSenha())) {
+                    $pstmt->bindValue(':senha', password_hash($User->getSenha(), PASSWORD_DEFAULT));
+                }
+                $pstmt->bindValue(':id', $User->getIdUser());
+                $pstmt->execute();
+        
+                return $pstmt->rowCount() > 0;
+            } catch (PDOException $e) {
+                error_log('Erro ao alterar usuário: ' . $e->getMessage());
+                return false;
+            }
+        }
+              
         public function deleteUser($id) {
             try {
                 $stmt = $this->conexao->prepare("DELETE FROM user WHERE id = :id");
@@ -51,6 +76,14 @@
                 echo "Erro ao excluir a usuário: " . $e->getMessage();
                 return false;
             }
+        }
+
+        public function selectUserById($id) {
+            $pstmt = $this->conexao->prepare("SELECT * FROM user WHERE id = :id");
+            $pstmt->bindValue(":id", $id);
+            $pstmt->execute();
+            $lista = $pstmt->fetchObject(User::class);
+            return $lista;
         }
 
         public function selectAllUser(){

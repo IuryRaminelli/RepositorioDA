@@ -59,40 +59,40 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
     <br><br>
     
     <h1 align="center">CADASTRAR ATIVIDADE</h1><br>
-<div class="container" style="width: 40%;">
-  <form align="center" action="<?= HOME ?>CadastroAtividade" method="POST" enctype="multipart/form-data">
-    <label for="nome">Nome</label>
-    <input type="text" class="form-control" name="nome" placeholder="Digite um Nome"/><br>
-    
-    <label for="descricao">Descrição</label>
-    <textarea name="descricao" class="form-control" placeholder="Digite uma Descrição" rows="5"></textarea><br>
-    
-    <label for="dia">Data</label>
-    <input type="date" class="form-control" name="dia" autofocus="true"/><br>
-    
-    <label for="local">Local</label>
-    <input type="text" class="form-control" name="local" placeholder="Digite um Local"/><br>
+    <div class="container" style="width: 40%;">
+      <form align="center" action="<?= HOME ?>CadastroAtividade" method="POST" enctype="multipart/form-data">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" name="nome" placeholder="Digite um Nome"/><br>
+        
+        <label for="descricao">Descrição</label>
+        <textarea name="descricao" class="form-control" placeholder="Digite uma Descrição" rows="5"></textarea><br>
+        
+        <label for="dia">Data</label>
+        <input type="date" class="form-control" name="dia" autofocus="true"/><br>
+        
+        <label for="local">Local</label>
+        <input type="text" class="form-control" name="local" placeholder="Digite um Local"/><br>
 
-    <input type="submit" value="Próximo" class="btn" name="cadastro" />
-  </form>
-</div>
+        <input type="submit" value="Próximo" class="btn" name="cadastro" />
+      </form>
+    </div>
 
-<script>
-  function addFileInput() {
-    const fileContainer = document.getElementById('file-container');
-    const newFileInput = document.createElement('div');
-    newFileInput.classList.add('d-flex', 'align-items-center', 'mb-2');
+    <script>
+      function addFileInput() {
+        const fileContainer = document.getElementById('file-container');
+        const newFileInput = document.createElement('div');
+        newFileInput.classList.add('d-flex', 'align-items-center', 'mb-2');
 
-    newFileInput.innerHTML = `
-      <input type="file" class="form-control me-2" name="arquivo[]"/>
-      <button type="button" class="btn p-0" onclick="addFileInput()">
-        <img src="src/View/img/maisbranco.png" width="28" height="28" alt="">
-      </button>
-    `;
+        newFileInput.innerHTML = `
+          <input type="file" class="form-control me-2" name="arquivo[]"/>
+          <button type="button" class="btn p-0" onclick="addFileInput()">
+            <img src="src/View/img/maisbranco.png" width="28" height="28" alt="">
+          </button>
+        `;
 
-    fileContainer.appendChild(newFileInput);
-  }
-</script>
+        fileContainer.appendChild(newFileInput);
+      }
+    </script>
 
     <?php include_once 'footer.php'; ?>
 </div>

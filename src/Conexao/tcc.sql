@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/12/2024 às 22:34
+-- Tempo de geração: 16/12/2024 às 19:27
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -39,7 +39,10 @@ CREATE TABLE `atas` (
 --
 
 INSERT INTO `atas` (`id`, `dia`, `descricao`, `arquivo`) VALUES
-(13, '2024-11-02', 'aa', 'src/View/img/FORMULÁRIO-MODELO-08-–-ATA-DA-CONVENÇÃO-MUNICIPAL-PARA-ELEIÇÃO-DO-DIRETÓRIO-4.pdf');
+(33, '2024-12-01', 'Ata de Eleição', 'src/View/img/3. Modelo de Minuta Ata Eleição de Diretoria.pdf'),
+(34, '2024-11-07', 'Ata de Reunião', 'src/View/img/MODELO-DE-ATA-DE-APURAÇÃO-DOS-VOTOS-POR-CORRESPONDÊNCIA.pdf'),
+(35, '2024-12-06', 'Ata de Reunião', 'src/View/img/modelo-de-ata-de-eleicao-e-posse.pdf'),
+(36, '2024-10-02', 'Ata de Eleição', 'src/View/img/ata-candidatos.pdf');
 
 -- --------------------------------------------------------
 
@@ -60,15 +63,17 @@ CREATE TABLE `atividade` (
 --
 
 INSERT INTO `atividade` (`id`, `nome`, `descricao`, `dia`, `local`) VALUES
-(17, 'CodeRace', 'A', '2024-11-01', 'Faculdade AMF'),
 (18, 'teste2', 'teste2', '2024-11-02', 'IFFAR'),
 (20, 'SeTEIC 16', '16° Semana Academica', '2024-11-06', 'IFFAR-SVS'),
-(21, 'teste de cadastro com imagem', 'teste de cadastro com imagem', '2024-11-06', 'IFFAR-SVS'),
 (22, 'cccc', 'ccccc', '2024-11-11', 'aaaa'),
-(24, 'Palestra 43', 'Os repositórios institucionais estão formados por material digital em coleções altamente estruturadas, compostas pelos produtos das atividades acadêmicas desenvolvidas em universidades e em instituições de pesquisa. Podem contemplar ampla variedade de doc', '2024-12-04', 'São Vicente do Sul'),
-(26, 'Nota de Pesar', 'O Instituto Federal Farroupilha - Campus São Vicente do Sul registra, com imenso pesar, o falecimento da egressa Carmem Rumpel Segabinazzi, ocorrido no dia de ontem, 01 de dezembro de 2024. Carmem era residente de São Vicente do Sul e foi nossa aluna do C', '2024-12-04', 'São Vicente do Sul'),
 (27, 'testeeeeeeeee', 'testetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetesteteste', '2024-12-04', 'Mata'),
-(29, 'masi um teste', 'asssssssssssssssssssssssss', '2024-12-04', 'São Vicente do Sul');
+(29, 'masi um teste', 'asssssssssssssssssssssssss', '2024-12-04', 'São Vicente do Sul'),
+(36, '1° dia de 16ª SeTEIC', 'No 1° dia de 16ª SeTEIC, dia 29/10/2024 ocorreu diversas oficinas no turno da manhã e tarde, como, WordPress, Manutenção de Notebook, Modelagem 3D, entre outras. No turno da noite, ocorreu a palestra \"De Dados a Decisões: Aplicações de Machine Learning no Mundo Real\", com ', '2024-10-29', 'São Vicente do Sul'),
+(37, '2° dia de 16ª SeTEIC', 'No 2° dia de 16ª SeTEIC, dia 30/10/2024 ocorreu diversas oficinas no turno da manhã e tarde, como, GameMaker, Canva, App Inventor, entre outras. No turno da noite, ocorreu a palestra \"Projetos de ensino e pesquisa nos cursos de engenharia da UFSM\".', '2024-10-30', 'São Vicente do Sul'),
+(38, '3° dia de 16ª SeTEIC', 'No 3° dia de 16ª SeTEIC, dia 30/10/2024 ocorreu diversas oficinas no turno da manhã e tarde, como, GameMaker, Canva, App Inventor, entre outras. No turno da noite, ocorreu a palestra \"Da Universidade ao Mundo Real: Construindo uma Carreira em Engenharia de Software\".', '2024-10-31', 'São Vicente do Sul'),
+(39, '4° dia de 16ª SeTEIC', 'No 4° e ultimo dia da 16ª SeTEIC, ocorreu uma Roda de Egressos e janta com os alunos e professores.', '2024-11-01', 'São Vicente do Sul'),
+(40, 'Confraternização Final de Semestre', 'No dia 13 de Dezembro de 2023, ocorreu uma confraternização organizada pelo DA juntamente com os professores, para celebrar o final do Semestre....', '2023-12-13', 'São Vicente do Sul'),
+(42, 'CodeRace', 'No dia 30 e 31 de Agosto de 2024, alunos da ADS e alguns representantes do DA, participaram de um hackathon na faculdade AMF.', '2024-08-31', 'Restinga Seca');
 
 -- --------------------------------------------------------
 
@@ -107,27 +112,32 @@ CREATE TABLE `imagem` (
 --
 
 INSERT INTO `imagem` (`id`, `idativ`, `arquivo`) VALUES
-(13, 'CodeRace', 'src/View/img/PHOTO-2024-08-31-09-31-53.jpg'),
-(14, 'CodeRace', 'src/View/img/PHOTO-2024-08-31-09-31-52.jpg'),
 (15, 'teste2', 'src/View/img/CLASSEalgo.png'),
 (16, 'teste2', 'src/View/img/casoUsoADM.png'),
 (19, 'SeTEIC 16', 'src/View/img/Design sem nome (3).png'),
 (20, 'SeTEIC 16', 'src/View/img/classeModel.png'),
 (21, 'SeTEIC 16', 'src/View/img/zp3F9ij__400x400.png'),
-(22, 'teste de cadastro com imagem', 'src/View/img/Design sem nome (3).png'),
 (23, 'cccc', 'src/View/img/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_ju90mj1tkx425b76rv7u.jpg'),
 (24, 'cccc', 'src/View/img/IFF.jpg'),
 (25, 'cccc', 'src/View/img/casoUsoADM.png'),
-(26, 'Palestra 43', 'src/View/img/ronaldinho2.jpg'),
-(27, 'Palestra 43', 'src/View/img/Screenshot_1.png'),
-(28, 'Palestra 43', 'src/View/img/Diagrama em branco.png'),
-(29, 'Palestra 43', 'src/View/img/TCC.png'),
-(30, 'Palestra 43', 'src/View/img/TelaLogin.png'),
-(31, 'Palestra 43', 'src/View/img/classeViewpt2.png'),
-(38, 'Nota de Pesar', 'src/View/img/ronaldinho2.jpg'),
 (39, 'testeeeeeeeee', 'src/View/img/ronaldinho2.jpg'),
 (40, 'testeeeeeeeee', 'src/View/img/Diagrama em branco.png'),
-(42, 'masi um teste', 'src/View/img/Diagrama em branco.png');
+(42, 'masi um teste', 'src/View/img/Diagrama em branco.png'),
+(45, '1° dia de 16ª SeTEIC', 'src/View/img/dia1.1.png'),
+(46, '1° dia de 16ª SeTEIC', 'src/View/img/dia1.2.png'),
+(47, '1° dia de 16ª SeTEIC', 'src/View/img/dia1.3.png'),
+(48, '2° dia de 16ª SeTEIC', 'src/View/img/dia2.3.png'),
+(49, '2° dia de 16ª SeTEIC', 'src/View/img/dia2.1.png'),
+(50, '2° dia de 16ª SeTEIC', 'src/View/img/dia2.2.png'),
+(51, '3° dia de 16ª SeTEIC', 'src/View/img/dia3.1.png'),
+(52, '4° dia de 16ª SeTEIC', 'src/View/img/dia4.1.png'),
+(53, '4° dia de 16ª SeTEIC', 'src/View/img/dia4.2.png'),
+(54, '4° dia de 16ª SeTEIC', 'src/View/img/dia4.3.png'),
+(55, 'Confraternização Final de Semestre', 'src/View/img/a1.png'),
+(56, 'Confraternização Final de Semestre', 'src/View/img/a2.png'),
+(57, 'Confraternização Final de Semestre', 'src/View/img/a3.png'),
+(58, 'Confraternização Final de Semestre', 'src/View/img/a4.png'),
+(59, 'CodeRace', 'src/View/img/b1.png');
 
 -- --------------------------------------------------------
 
@@ -200,9 +210,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nome`, `email`, `senha`, `telefone`, `tipo`) VALUES
-(1, 'Adminstrador', 'administrador@teste.com', '123', '51998754368', 'admin'),
+(1, 'Adminstrador', 'administrador@teste.com', '$2y$10$DGl6Ome9kC25xoubqKSflOBWm3X4tZQgc8.yPLzCHlSgyEJTSGIOy', '51998754368', 'admin'),
 (2, 'IURY RAMINELLI', 'raminelliiury4@gmail.com', '123', '51998754368', 'membro'),
-(3, 'Itamar', 'raminellitamar@gmail.com', '123', '11111', 'membro');
+(3, 'Itamar', 'raminellitamar@gmail.com', '123', '11111', 'membro'),
+(4, 'Santinhooo', 'santinho@gmail.com', '$2y$10$.n1.q9byFv7Mh3Rb3ImEwe81Z4y1oyDqvpBryC68djOzjaL4K6xoC', '543221', 'membro');
 
 --
 -- Índices para tabelas despejadas
@@ -260,13 +271,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de tabela `atas`
 --
 ALTER TABLE `atas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de tabela `atividade`
 --
 ALTER TABLE `atividade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de tabela `estatuto`
@@ -278,7 +289,7 @@ ALTER TABLE `estatuto`
 -- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de tabela `membros`
@@ -296,7 +307,7 @@ ALTER TABLE `transacao`
 -- AUTO_INCREMENT de tabela `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para tabelas despejadas
