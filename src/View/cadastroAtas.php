@@ -19,16 +19,6 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
         echo "<script>alert('Apenas arquivos PDF são permitidos.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
       }
 
-      if (file_exists($target_file)) {
-        $uploadOk = 0;
-        echo "<script>alert('O arquivo já existe.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
-      }
-
-      if ($_FILES["arquivo"]["size"] > 5000000) { 
-        $uploadOk = 0;
-        echo "<script>alert('O arquivo excede o tamanho máximo permitido.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
-      }
-
       if ($uploadOk == 0) {
         echo "<script>alert('Desculpe, houve um erro ao enviar seu arquivo.'); window.location.href = '" . HOME . "CadastroAtas';</script>";
       } else {
@@ -57,6 +47,25 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .container2 {
+            width: 45%;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .container2 {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container2 {
+                width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
 </head>
 <body>      
   <?php
@@ -91,7 +100,7 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_S
     <br><br>
 
     <h1 align="center">CADASTRAR ATA</h1><br>
-    <div class="container" style="width: 40%;">
+    <div class="container2">
     <form align="center" action="<?= HOME ?>CadastroAtas" method="POST" enctype="multipart/form-data">
                 <label for="dia">Data</label>
                 <input type="date" class="form-control" name="dia" autofocus="true"/><br>

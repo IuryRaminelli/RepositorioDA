@@ -43,6 +43,25 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <style>
+        .container2 {
+            width: 45%;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .container2 {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container2 {
+                width: 100%;
+                padding: 0 15px;
+            }
+        }
+    </style>
 </head>
 <body>      
   <?php
@@ -79,7 +98,7 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] == "admin") {
     <br><br><br>
 
     <h1 align="center">CADASTRAR USUÁRIO</h1><br>
-    <div class="container" style="width: 40%;">
+    <div class="container2">
     <form align="center" action="<?= HOME ?>CadastroUser" method="POST">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" name="nome" placeholder="Digite um nome" autofocus="true"/><br>
