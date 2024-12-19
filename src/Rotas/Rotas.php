@@ -19,12 +19,10 @@ class Rotas{
 	}
 	
 	public static function addGetId($rota, $destino){
-		// Este método captura o parâmetro 'id' diretamente da URL
 		self::$rotas['^'.$rota.'\?id=(?P<id>\d+)$'] = $destino;
 	}
 
 	public static function addGetPag($rota, $destino){
-		// Este método captura o parâmetro 'pagina' diretamente da URL
 		self::$rotas['^'.$rota.'\?pagina=(?P<pagina>\d+)$'] = $destino;
 	}
 	

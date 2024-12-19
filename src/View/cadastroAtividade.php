@@ -96,23 +96,6 @@ if (isset($_SESSION["USER_LOGIN"]) && $_SESSION["USER_LOGIN"] != "admin" || $_SE
       </form>
     </div>
 
-    <script>
-      function addFileInput() {
-        const fileContainer = document.getElementById('file-container');
-        const newFileInput = document.createElement('div');
-        newFileInput.classList.add('d-flex', 'align-items-center', 'mb-2');
-
-        newFileInput.innerHTML = `
-          <input type="file" class="form-control me-2" name="arquivo[]"/>
-          <button type="button" class="btn p-0" onclick="addFileInput()">
-            <img src="src/View/img/maisbranco.png" width="28" height="28" alt="">
-          </button>
-        `;
-
-        fileContainer.appendChild(newFileInput);
-      }
-    </script>
-
     <?php include_once 'footer.php'; ?>
 </div>
 </body>

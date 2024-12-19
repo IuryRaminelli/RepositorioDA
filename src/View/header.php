@@ -95,7 +95,6 @@ $is_active = in_array($current_page, ['Atividade', 'AtividadeDetalhes']);
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtividade">Atividades</a></li>
                     <li><a class="dropdown-item" href="<?=HOME?>CadastroAtas">Atas</a></li>
-                    <li><a class="dropdown-item" href="<?=HOME?>CadastroTransacao">Financeiro</a></li>
                   </ul>
                 </li>
                 

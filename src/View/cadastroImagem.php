@@ -18,7 +18,7 @@ if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] == "admin" || iss
                 $target_file = $target_dir . basename($name);
                 $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-                if (in_array($fileType, ['jpg', 'jpeg', 'png', 'gif'])) {
+                if (in_array($fileType, ['jpg', 'jpeg', 'png'])) {
                     if (move_uploaded_file($arquivos['tmp_name'][$key], $target_file)) {
                         $arrayCIA = array(
                             "idativ" => $nomeAtividade,

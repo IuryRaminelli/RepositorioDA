@@ -113,6 +113,7 @@ $atividades = $ConAtividade->selectAtividadesComPaginacao($pagina, $limite);
 
             $ConImagem = new ConImagem();
         ?>
+        
         <div class="row">
             <?php foreach ($atividades as $atividade): ?>
                 <?php $atividade = new Atividade($atividade); ?>
