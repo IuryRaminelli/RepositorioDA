@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/12/2024 às 19:27
+-- Tempo de geração: 02/01/2025 às 17:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -73,7 +73,8 @@ INSERT INTO `atividade` (`id`, `nome`, `descricao`, `dia`, `local`) VALUES
 (38, '3° dia de 16ª SeTEIC', 'No 3° dia de 16ª SeTEIC, dia 30/10/2024 ocorreu diversas oficinas no turno da manhã e tarde, como, GameMaker, Canva, App Inventor, entre outras. No turno da noite, ocorreu a palestra \"Da Universidade ao Mundo Real: Construindo uma Carreira em Engenharia de Software\".', '2024-10-31', 'São Vicente do Sul'),
 (39, '4° dia de 16ª SeTEIC', 'No 4° e ultimo dia da 16ª SeTEIC, ocorreu uma Roda de Egressos e janta com os alunos e professores.', '2024-11-01', 'São Vicente do Sul'),
 (40, 'Confraternização Final de Semestre', 'No dia 13 de Dezembro de 2023, ocorreu uma confraternização organizada pelo DA juntamente com os professores, para celebrar o final do Semestre....', '2023-12-13', 'São Vicente do Sul'),
-(42, 'CodeRace', 'No dia 30 e 31 de Agosto de 2024, alunos da ADS e alguns representantes do DA, participaram de um hackathon na faculdade AMF.', '2024-08-31', 'Restinga Seca');
+(42, 'CodeRace', 'No dia 30 e 31 de Agosto de 2024, alunos da ADS e alguns representantes do DA, participaram de um hackathon na faculdade AMF.', '2024-08-31', 'Restinga Seca'),
+(44, 'Testando Vídeo', 'Teste', '2024-12-19', 'São Vicente do Sul');
 
 -- --------------------------------------------------------
 
@@ -137,7 +138,34 @@ INSERT INTO `imagem` (`id`, `idativ`, `arquivo`) VALUES
 (56, 'Confraternização Final de Semestre', 'src/View/img/a2.png'),
 (57, 'Confraternização Final de Semestre', 'src/View/img/a3.png'),
 (58, 'Confraternização Final de Semestre', 'src/View/img/a4.png'),
-(59, 'CodeRace', 'src/View/img/b1.png');
+(59, 'CodeRace', 'src/View/img/b1.png'),
+(61, 'Testando Vídeo', 'src/View/img/3e3166157ec5aab796cadcbc4de31351.jpg'),
+(62, 'Testando Vídeo', 'src/View/img/ads.png'),
+(63, 'Testando Vídeo', 'src/View/img/logo-ads.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `log_transacoes`
+--
+
+CREATE TABLE `log_transacoes` (
+  `id` int(11) NOT NULL,
+  `idTrans` int(11) NOT NULL,
+  `quantidade` decimal(10,2) DEFAULT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  `dia` date DEFAULT NULL,
+  `data_exclusao` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `log_transacoes`
+--
+
+INSERT INTO `log_transacoes` (`id`, `idTrans`, `quantidade`, `descricao`, `dia`, `data_exclusao`) VALUES
+(1, 11, -94.00, 'apoio financeiro', '2024-12-10', '2024-12-19 14:34:44'),
+(2, 1, 555.00, 'Patrocínio AMPER', '2024-10-25', '2024-12-19 14:42:22'),
+(3, 12, -2000.00, 'Saída de dinheiro teste', '2024-12-19', '2024-12-19 21:34:32');
 
 -- --------------------------------------------------------
 
@@ -182,13 +210,22 @@ CREATE TABLE `transacao` (
 --
 
 INSERT INTO `transacao` (`id`, `quantidade`, `dia`, `descricao`) VALUES
-(1, 555, '2024-10-25', 'Patrocínio AMPER'),
 (3, -900, '2024-10-22', 'Pagamento Águas'),
 (4, 545, '2024-10-26', 'Teste'),
 (6, 1200, '2024-11-07', 'apoio financeiro'),
 (7, -800, '2024-11-12', 'Teste'),
-(8, 1000, '2024-11-12', 'Estatuto DAADS'),
-(11, -94, '2024-12-10', 'apoio financeiro');
+(8, 1000, '2024-11-12', 'Estatuto DAADS');
+
+--
+-- Acionadores `transacao`
+--
+DELIMITER $$
+CREATE TRIGGER `after_delete_transacao` AFTER DELETE ON `transacao` FOR EACH ROW BEGIN
+    INSERT INTO log_transacoes (idTrans, quantidade, descricao, dia)
+    VALUES (OLD.id, OLD.quantidade, OLD.descricao, OLD.dia);
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -210,10 +247,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nome`, `email`, `senha`, `telefone`, `tipo`) VALUES
-(1, 'Adminstrador', 'administrador@teste.com', '$2y$10$DGl6Ome9kC25xoubqKSflOBWm3X4tZQgc8.yPLzCHlSgyEJTSGIOy', '51998754368', 'admin'),
+(1, 'Adminstradorrr', 'administrador@teste.com', '$2y$10$DGl6Ome9kC25xoubqKSflOBWm3X4tZQgc8.yPLzCHlSgyEJTSGIOy', '51998754368', 'admin'),
 (2, 'IURY RAMINELLI', 'raminelliiury4@gmail.com', '123', '51998754368', 'membro'),
 (3, 'Itamar', 'raminellitamar@gmail.com', '123', '11111', 'membro'),
-(4, 'Santinhooo', 'santinho@gmail.com', '$2y$10$.n1.q9byFv7Mh3Rb3ImEwe81Z4y1oyDqvpBryC68djOzjaL4K6xoC', '543221', 'membro');
+(4, 'Santinhooo', 'santinho@gmail.com', '$2y$10$.n1.q9byFv7Mh3Rb3ImEwe81Z4y1oyDqvpBryC68djOzjaL4K6xoC', '1111', 'membro');
 
 --
 -- Índices para tabelas despejadas
@@ -244,6 +281,12 @@ ALTER TABLE `estatuto`
 ALTER TABLE `imagem`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fkatividade` (`idativ`);
+
+--
+-- Índices de tabela `log_transacoes`
+--
+ALTER TABLE `log_transacoes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `membros`
@@ -277,7 +320,7 @@ ALTER TABLE `atas`
 -- AUTO_INCREMENT de tabela `atividade`
 --
 ALTER TABLE `atividade`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de tabela `estatuto`
@@ -289,19 +332,25 @@ ALTER TABLE `estatuto`
 -- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT de tabela `log_transacoes`
+--
+ALTER TABLE `log_transacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `membros`
 --
 ALTER TABLE `membros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `transacao`
 --
 ALTER TABLE `transacao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `user`

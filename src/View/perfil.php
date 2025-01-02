@@ -14,8 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
 }
 
 
-if($linha != null){
-    $user = new User($linha[0]);
+if (isset($_SESSION["USER_LOGIN"]) && ($_SESSION["USER_LOGIN"] != "admin" || $_SESSION["USER_LOGIN"] == "admin")) {
+
+    if($linha != null){
+        $user = new User($linha[0]);
 ?>
 
 <!DOCTYPE html>
@@ -89,5 +91,8 @@ if($linha != null){
 </body>
 </html>
 <?php
+    }
+} else {
+    echo "<h1>404 Não possui acesso.</h1>";
 }
 ?>
